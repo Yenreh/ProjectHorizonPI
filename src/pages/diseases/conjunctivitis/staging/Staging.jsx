@@ -1,7 +1,13 @@
 import { Environment } from "@react-three/drei";
 
 const Staging = () => {
-  return <Environment preset="city" background intensity={0} />;
+  return (
+    <Environment
+      files="/textures/conjunctivitis/hospital_room.jpg"
+      background
+      intensity={1} 
+    />
+  );
 };
 
 export default Staging;
