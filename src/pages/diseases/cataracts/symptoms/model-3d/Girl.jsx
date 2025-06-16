@@ -3,12 +3,17 @@ import React, { useState, useRef, useEffect } from 'react'
 import { useGLTF } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber'
 import * as THREE from 'three'
+import { useThree } from '@react-three/fiber'
+import Text from "../texts/Text"
+import {  useKeyboardControls } from '@react-three/drei'
+import { DepthOfField, EffectComposer,  ChromaticAberration } from '@react-three/postprocessing'
 
 export function Girl(props) {
   const { nodes, materials } = useGLTF('/models-3d/cataracts/girl.glb')
 
   const [showGlasses, setShowGlasses] = useState(false)
   const [glassesAnimationTime, setGlassesAnimationTime] = useState(0)
+  const [subscribeKeys, getKeys] = useKeyboardControls() //Events
 
   const spring = useSpring({
     scale: showGlasses ? 1 : 0.001,
@@ -19,18 +24,50 @@ export function Girl(props) {
   const glassesGroupRef = useRef()
   const groupRef = useRef()
 
-  useEffect(() => {
-    const handleKeyDown = (e) => {
-      if (e.key === 'g' && showGlasses) {
-        setGlassesAnimationTime(2.5)
-      }
-    }
-    window.addEventListener('keydown', handleKeyDown)
-    return () => window.removeEventListener('keydown', handleKeyDown)
-  }, [showGlasses])
+  const [showClouds, setShowClouds] = useState(false)
+  const targetCameraPos = useRef(null)
+  const { camera } = useThree()
+  const initialCameraPos = useRef(camera.position.clone())
+  const [animationGirl, setAnimationGirl] = useState(true)
+
+  // useEffect(() => {
+  //   const handleKeyDown = (e) => {
+  //     // if (e.key === 'g' && showGlasses) {
+  //     //   setGlassesAnimationTime(2.5)
+  //     // }
+
+  //     if (e.key === 's' || e.key === 'S') {
+  //       targetCameraPos.current = new THREE.Vector3(0, 0.2, -0.3)
+  //       setShowClouds(true)
+  //       setAnimationGirl(false)
+  //     }
+
+  //     if (e.key === 'n' || e.key === 'N') {
+  //       targetCameraPos.current = initialCameraPos.current.clone()
+  //       setShowClouds(false)
+  //       setAnimationGirl(true)
+  //     }
+  //   }
+  //   window.addEventListener('keydown', handleKeyDown)
+  //   return () => window.removeEventListener('keydown', handleKeyDown)
+  // }, [showGlasses])
 
   useFrame((state, delta) => {
-    if (groupRef.current) {
+    const { Return, symptom } = getKeys()
+
+    if (Return) {
+        targetCameraPos.current = initialCameraPos.current.clone()
+        setShowClouds(false)
+        setAnimationGirl(true)
+    }
+
+    if (symptom) {
+        targetCameraPos.current = new THREE.Vector3(0, 0.2, -0.3)
+        setShowClouds(true)
+        setAnimationGirl(false)
+    }
+
+    if (groupRef.current && animationGirl) {
         const t = state.clock.elapsedTime
         groupRef.current.rotation.y = Math.sin(t * 1.5) * 0.2
     }
@@ -41,6 +78,11 @@ export function Girl(props) {
       setGlassesAnimationTime((prev) => Math.max(prev - delta, 0))
     } else if (glassesGroupRef.current) {
       glassesGroupRef.current.rotation.y *= 0.9
+    }
+
+    if (targetCameraPos.current) {
+      camera.position.lerp(targetCameraPos.current, 0.09)
+      camera.lookAt(0, 0, 0) // Ajusta a donde mirar
     }
   })
 
@@ -81,9 +123,19 @@ export function Girl(props) {
       />
       
       <mesh castShadow geometry={nodes.Hair.geometry} material={materials.Hair} />
+
+      {showClouds && (
+        <>
+        <EffectComposer>
+          <DepthOfField focusDistance={0.01} focalLength={0.02} bokehScale={2} />
+          <ChromaticAberration offset={[0.005, 0.003]} />
+          
+        </EffectComposer>
+        <Text textContent={"Presiona n para volver"} scaleX={-1} posX={1.1} posY={1} posZ={6}/>
+        </>
+      )}
     </group>
   )
 }
 
 useGLTF.preload('/models-3d/cataracts/girl.glb')
-
