@@ -28,9 +28,9 @@ const TextHtml = ({ scaleX, posX, posY, posZ }) => {
           <div className='info-box-cataracts'
           >
             👁️ Presiona: <br />
-            s - Vista sin tratamiento  <br />
+            a - Vista sin tratamiento  <br />
             t - Efecto del tratamiento <br />
-            n - Volver
+            v / clic - Volver
           </div>
         )}
       </div>

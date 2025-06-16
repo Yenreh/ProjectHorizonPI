@@ -16,7 +16,7 @@ export default function definition() {
             <div className="position-absolute bottom-0 end-0 p-2 desease-canvas-icon"> 
               <LuRotate3D title="Modelo 3D" />
             </div>
-            <Canvas camera={{ position: [0, 0, 3]}} shadows>
+            <Canvas camera={{ position: [0, 0.5, 3]}} shadows>
               <Suspense fallback={null}>
                 <Title />
                 <Lights />

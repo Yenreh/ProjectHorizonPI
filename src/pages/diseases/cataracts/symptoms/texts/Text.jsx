@@ -1,7 +1,7 @@
 import { Html } from "@react-three/drei";
 import "./Text.css";
 
-const Text = ({ textContent, scaleX, posX, posY, posZ }) => {
+const Text = ({ textContent, scaleX, posX, posY, posZ}) => {
   return (
     <Html
       center
@@ -11,7 +11,7 @@ const Text = ({ textContent, scaleX, posX, posY, posZ }) => {
       wrapperClass="title"
       scale={[scaleX, 1, 1]}
     >
-      <h4> {textContent} </h4>
+      <h3> {textContent} </h3>
     </Html>
   );
 };

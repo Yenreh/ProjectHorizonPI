@@ -6,7 +6,7 @@ const TextHtml = () => {
   return (
     <Html
       center
-      position={[-1.1, 1.6, 0.5]}
+      position={[-1.2, 1.6, 0.5]}
       transform
       distanceFactor={5}
       wrapperClass="title"
@@ -17,7 +17,7 @@ const TextHtml = () => {
           className="info-button-prevention"
         >
           <i class="bi bi-volume-up-fill"></i>
-          Presiona e para escuchar
+           Presiona e para escuchar
         </h1>
       </div>
     </Html>

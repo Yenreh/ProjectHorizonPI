@@ -4,10 +4,9 @@ import { useGLTF } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber'
 import * as THREE from 'three'
 import { useThree } from '@react-three/fiber'
-import { Cloud } from '@react-three/drei'
 import Text from "../texts/Text"
-import { KeyboardControls, useKeyboardControls } from '@react-three/drei'
-import { Bloom, DepthOfField, EffectComposer, Noise, Vignette } from '@react-three/postprocessing'
+import {  useKeyboardControls } from '@react-three/drei'
+import { DepthOfField, EffectComposer,  ChromaticAberration } from '@react-three/postprocessing'
 
 export function Girl(props) {
   const { nodes, materials } = useGLTF('/models-3d/cataracts/girl.glb')
@@ -127,20 +126,15 @@ export function Girl(props) {
 
       {showClouds && (
         <>
-        <Cloud
-          position={[0, -2, 4]}
-          opacity={0.5}
-          segments={50}
-          bounds={[5, 5, 2]}
-        />
-        <Text textContent={"Presiona n para volver"} scaleX={-1} posX={0} posY={1} posZ={5}/>
+        <EffectComposer>
+          <DepthOfField focusDistance={0.01} focalLength={0.02} bokehScale={2} />
+          <ChromaticAberration offset={[0.005, 0.003]} />
+          
+        </EffectComposer>
+        <Text textContent={"Presiona n para volver"} scaleX={-1} posX={1.1} posY={1} posZ={6}/>
         </>
-        
-
       )}
     </group>
-
-    
   )
 }
 

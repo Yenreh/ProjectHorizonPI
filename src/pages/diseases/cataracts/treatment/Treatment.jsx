@@ -19,8 +19,8 @@ export default function Treatment() {
             <Canvas camera={{ position: [0, 0, 3]}} shadows>
             <KeyboardControls
               map={[
-                { name: 'Return', keys: ['n', 'N'] },
-                { name: 'symptom', keys: ['s', 'S'] },
+                { name: 'Return', keys: ['v', 'V'] },
+                { name: 'symptom', keys: ['a', 'A'] },
                 { name: 'treatments', keys: ['t', 'T'] },
               ]}
             >

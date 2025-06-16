@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react'
 import { useGLTF } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber'
-import { KeyboardControls, useKeyboardControls } from '@react-three/drei'
+import {  useKeyboardControls } from '@react-three/drei'
 import { PositionalAudio } from '@react-three/drei'
 
 export function Vegetable(props) {
@@ -15,7 +15,7 @@ export function Vegetable(props) {
   const soundRef = useRef()
 
   useFrame((state, delta) => {
-    const { vitaminC, hear} = getKeys()
+    const { hear } = getKeys()
     if (clicked && orangesRef.current) {
       orangesRef.current.rotation.z = Math.sin(state.clock.elapsedTime * 4) * 0.06
     }

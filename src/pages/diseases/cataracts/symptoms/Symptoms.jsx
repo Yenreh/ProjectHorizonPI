@@ -28,7 +28,7 @@ export default function Symptoms() {
                 <Suspense fallback={null}>
                           <Lights />
                           <Staging />
-                          <Text textContent={"¡Haz clic y luego presiona s!"} scaleX={1} posX={-0.5} posY={2.5} posZ={-3} />
+                          <Text textContent={"¡Haz clic y presiona s!"} scaleX={1} posX={-0.5} posY={2.8} posZ={-3} />
                           <Girl position={[0, -1, -0.5]}/>
 
                 </Suspense>
@@ -39,7 +39,7 @@ export default function Symptoms() {
           </div>
         </div>        
         <div className="info-section">
-          <h2 className="mb-3" style={{ color: 'var(--color-2)' }}>Sintomas</h2>
+          <h2 className="mb-3" style={{ color: 'var(--color-2)' }}>Síntomas</h2>
           <p>
           Entre los síntomas más comunes que pueden indicar la presencia de cataratas se encuentran: 
           </p>

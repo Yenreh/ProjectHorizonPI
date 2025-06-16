@@ -1,5 +1,4 @@
-import {Environment, Sky, useTexture } from '@react-three/drei'
-import { Clouds, Cloud } from '@react-three/drei'
+import { Environment, useTexture } from '@react-three/drei'
 import React, { useMemo } from 'react'
 import TextHtml from '../texts/TextHtml';
 
@@ -17,7 +16,7 @@ const Staging = () => {
 
     return ( 
     <>
-        <TextHtml scaleX={1} posX={-1} posY={1.3} posZ={-1} />
+        <TextHtml scaleX={1} posX={-1.1} posY={1.4} posZ={-1} />
         <Environment preset='park' background/>
 
         <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -0.59, 0]} receiveShadow>
