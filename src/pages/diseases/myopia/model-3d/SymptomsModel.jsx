@@ -1,67 +1,32 @@
 /* eslint-disable react/no-unknown-property */
-import { useRef, useEffect } from 'react'
-import { useGLTF } from '@react-three/drei'
-import { useFrame } from '@react-three/fiber'
+import { useRef } from 'react';
+import { useGLTF } from '@react-three/drei';
+import { useFrame } from '@react-three/fiber';
+import useModelStore from '../../../stores/useModelStore';
 
 export function SymptomsModel(props) {
-    const { nodes, materials } = useGLTF('/models-3d/myopia/model-2.glb')
-    const groupRef = useRef()
-
-    // Variables para controlar la rotación y traslación manual
-    let rotationSpeed = 0
-    let translationSpeed = 0
-
-    useEffect(() => {
-        const handleKeyDown = (event) => {
-            const key = event.key.toUpperCase() // Convertir la tecla a mayúsculas
-            if (key === 'A') {
-                rotationSpeed = -0.02 // Rotar hacia la izquierda
-            } else if (key === 'D') {
-                rotationSpeed = 0.02 // Rotar hacia la derecha
-            } else if (key === 'W') {
-                translationSpeed = -0.1 // Acercar (mover hacia adelante en el eje Z)
-            } else if (key === 'S') {
-                translationSpeed = 0.1 // Alejar (mover hacia atrás en el eje Z)
-            }
-        }
-
-        const handleKeyUp = (event) => {
-            const key = event.key.toUpperCase() // Convertir la tecla a mayúsculas
-            if (key === 'A' || key === 'D') {
-                rotationSpeed = 0 // Detener la rotación al soltar la tecla
-            } else if (key === 'W' || key === 'S') {
-                translationSpeed = 0 // Detener la traslación al soltar la tecla
-            }
-        }
-
-        window.addEventListener('keydown', handleKeyDown)
-        window.addEventListener('keyup', handleKeyUp)
-
-        return () => {
-            window.removeEventListener('keydown', handleKeyDown)
-            window.removeEventListener('keyup', handleKeyUp)
-        }
-    }, [])
-
+    const { nodes, materials } = useGLTF('/models-3d/myopia/model-2.glb');
+    const groupRef = useRef();
+    const keysPressed = useModelStore((state) => state.keysPressed);
 
     useFrame(({ clock }) => {
         // Rotación automática leve
-        groupRef.current.rotation.y +=  Math.sin(clock.getElapsedTime()) * 0.001
-    
+        groupRef.current.rotation.y += Math.sin(clock.getElapsedTime()) * 0.001;
+
         // Rotación manual
-        groupRef.current.rotation.y += rotationSpeed
-    
-        // Traslación manual en el eje Z
-        if (groupRef.current) {
-            groupRef.current.position.z += translationSpeed
-            // Limitar la traslación para evitar que el objeto se aleje demasiado o se acerque demasiado
-            if (groupRef.current.position.z > 5) {
-                groupRef.current.position.z = 5
-            } else if (groupRef.current.position.z < -5) {
-                groupRef.current.position.z = -5
-            }
+        if (keysPressed['A']) {
+            groupRef.current.rotation.y -= 0.02;
+        } else if (keysPressed['D']) {
+            groupRef.current.rotation.y += 0.02;
         }
-    })
+
+        // Traslación manual en el eje Z
+        if (keysPressed['W']) {
+            groupRef.current.position.z = Math.max(groupRef.current.position.z - 0.1, -5);
+        } else if (keysPressed['S']) {
+            groupRef.current.position.z = Math.min(groupRef.current.position.z + 0.1, 5);
+        }
+    });
 
     return (
         <group ref={groupRef} {...props} dispose={null}>
@@ -71,9 +36,10 @@ export function SymptomsModel(props) {
                 castShadow
             />
         </group>
-    )
+    );
 }
 
-export default SymptomsModel
+export default SymptomsModel;
 
-useGLTF.preload('/model-2.glb')
+useGLTF.preload('/model-2.glb');
+

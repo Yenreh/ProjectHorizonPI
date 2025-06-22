@@ -1,15 +1,36 @@
-import { useState, Suspense } from 'react';
+/* eslint-disable react/no-unknown-property */
+/* eslint-disable react/prop-types */
+import { useState, useEffect, Suspense } from 'react';
 import { Container, Row, Col, Tab, Tabs } from 'react-bootstrap';
 import './Desease.css';
+import useModelStore from '../stores/useModelStore';
 
-export default function Desease({ desease, tabs, Definitions }) {
+function Desease({ desease, tabs, Definitions }) {
     const [key, setKey] = useState('definition');
+    const setKeyPressed = useModelStore((state) => state.setKeyPressed);
 
     const preloadTab = (tab) => {
         const component = Definitions[tab];
         if (component) component.preload?.();
-
     };
+
+    useEffect(() => {
+        const handleKeyDown = (event) => {
+            setKeyPressed(event.key.toUpperCase(), true);
+        };
+
+        const handleKeyUp = (event) => {
+            setKeyPressed(event.key.toUpperCase(), false);
+        };
+
+        window.addEventListener('keydown', handleKeyDown);
+        window.addEventListener('keyup', handleKeyUp);
+
+        return () => {
+            window.removeEventListener('keydown', handleKeyDown);
+            window.removeEventListener('keyup', handleKeyUp);
+        };
+    }, [setKeyPressed]);
 
     return (
         <Container fluid className="desease-container px-0">
@@ -28,7 +49,7 @@ export default function Desease({ desease, tabs, Definitions }) {
                 </Col>
             </Row>
             <Row className="justify-content-center g-0">
-                <Col xs={12} md={10} lg={8}>
+                <Col xs={12} md={10} lg={10}>
                     <Tabs
                         id={`${desease.name}-info-tabs`}
                         activeKey={key}
@@ -55,3 +76,5 @@ export default function Desease({ desease, tabs, Definitions }) {
         </Container>
     );
 }
+
+export default Desease

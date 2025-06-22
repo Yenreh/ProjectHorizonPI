@@ -1,44 +1,24 @@
 /* eslint-disable react/no-unknown-property */
-import { useRef, useEffect } from 'react'
+import { useRef } from 'react'
 import { useGLTF } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber'
+import useModelStore from '../../../stores/useModelStore'
 
 export function DefinitionModel(props) {
   const { nodes, materials } = useGLTF('/models-3d/myopia/model-1.glb')
   const groupRef = useRef()
-
-  // Variable para controlar la rotación manual
-  let rotationSpeed = 0
-
-  useEffect(() => {
-    const handleKeyDown = (event) => {
-      if (event.key === 'ArrowLeft') {
-        rotationSpeed = -0.02 // Rotar hacia la izquierda
-      } else if (event.key === 'ArrowRight') {
-        rotationSpeed = 0.02 // Rotar hacia la derecha
-      }
-    }
-
-    const handleKeyUp = (event) => {
-      if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
-        rotationSpeed = 0 // Detener la rotación al soltar la tecla
-      }
-    }
-
-    window.addEventListener('keydown', handleKeyDown)
-    window.addEventListener('keyup', handleKeyUp)
-
-    return () => {
-      window.removeEventListener('keydown', handleKeyDown)
-      window.removeEventListener('keyup', handleKeyUp)
-    }
-  }, [])
+  const keysPressed = useModelStore((state) => state.keysPressed)
 
   useFrame(({ clock }) => {
     // Rotación automática
     groupRef.current.rotation.y += Math.sin(clock.getElapsedTime()) * 0.001
+
     // Rotación manual
-    groupRef.current.rotation.y += rotationSpeed
+    if (keysPressed['A']) {
+      groupRef.current.rotation.y -= 0.02
+    } else if (keysPressed['D']) {
+      groupRef.current.rotation.y += 0.02
+    }
   })
 
   return (
@@ -178,3 +158,4 @@ export function DefinitionModel(props) {
 }
 
 useGLTF.preload('/models-3d/myopia/eye-myopia.glb')
+

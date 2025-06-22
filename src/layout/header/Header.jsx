@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { NavLink, useLocation } from "react-router"; // Import useLocation
 import { Button, Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
 import "./Header.css";
 
 const Header = () => {
     const [menuOpen, setMenuOpen] = useState(false);
+    const [isHidden, setIsHidden] = useState(false);
     const location = useLocation(); 
 
     const toggleMenu = () => setMenuOpen((prev) => !prev);
@@ -19,8 +20,29 @@ const Header = () => {
         location.pathname.includes(disease.name)
     ); 
 
+    useEffect(() => {
+        let lastScrollY = window.scrollY;
+
+        const handleScroll = () => {
+            const isDropdownOpen = document.querySelector('.dropdown-menu.show');
+
+            if (!isDropdownOpen) {
+                if (window.scrollY > lastScrollY) {
+                    setIsHidden(true);
+                } else {
+                    setIsHidden(false);
+                }
+            }
+
+            lastScrollY = window.scrollY;
+        };
+
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
+
     return (
-        <header>
+        <header className={isHidden ? "hidden" : ""}>
             <Navbar expand="lg" expanded={menuOpen}>
                 <Container>
                     <Navbar.Brand href="/" className="d-flex align-items-center">
@@ -61,7 +83,7 @@ const Header = () => {
                             </NavDropdown>
                             <Nav.Item>
                                 <Nav.Link as={NavLink} to="/about-us" onClick={() => setMenuOpen(false)}>
-                                    About Us
+                                    Sobre nosotros
                                 </Nav.Link>
                             </Nav.Item>
                             <Nav.Item>

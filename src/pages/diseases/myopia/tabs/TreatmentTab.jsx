@@ -9,7 +9,7 @@ export default function TreatmentTab() {
   return (
     <section className="desease-content py-4 px-md-3">
       <Row className="align-items-center gy-4">
-        <Col md={6}>
+        <Col xs={12} md={12} lg={6} >
           <div className="desease-canvas-wrapper">
             <Canvas camera={{ position: [0, 0.5, 2.5] }} shadows>
               <Suspense fallback={null}>
@@ -19,7 +19,7 @@ export default function TreatmentTab() {
             </Canvas>
           </div>
         </Col>
-        <Col md={6}>
+        <Col xs={12} md={12} lg={6} >
           <div className="desease-text-definition p-4">
             <h2 className="mb-3" style={{ color: 'var(--color-2)' }}>
               Opciones de Tratamiento

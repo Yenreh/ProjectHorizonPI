@@ -12,7 +12,7 @@ export default function SymptomsTab() {
   return (
     <section className="desease-content py-4 px-md-3">
       <Row className="align-items-center gy-4">
-        <Col md={6}>
+        <Col xs={12} md={12} lg={6} >
           <div className="desease-canvas-wrapper position-relative">
             <div className="position-absolute bottom-0 end-0 p-2 desease-canvas-icon"> 
               <LuRotate3D title="Modelo 3D" />
@@ -49,7 +49,7 @@ export default function SymptomsTab() {
             </Canvas>
           </div>
         </Col>
-        <Col md={6}>
+        <Col xs={12} md={12} lg={6} >
           <div className="disease-text-definition p-4">
             <h2 className="mb-3" style={{ color: 'var(--color-2)' }}>
               Síntomas comunes de la miopía

@@ -1,6 +1,22 @@
+header.hidden {
+    transform: translateY(-100%);
+    transition: transform 0.3s ease-in-out;
+}
+
 header {
     background-color: var(--color-2);
     color: var(--color-1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    transform: translateY(0);
+    transition: transform 0.3s ease-in-out;
+}
+
+header:hover {
+    transform: translateY(0);
 }
 
 header .navbar-toggler-icon {
@@ -65,4 +81,18 @@ header .dropdown-item.active {
 
 header .dropdown.active>.dropdown-toggle {
     color: var(--color-5);
+}
+
+@media (hover: none) and (pointer: coarse) {
+    header {
+        transform: translateY(0);
+    }
+
+    header.hidden {
+        transform: translateY(-100%);
+    }
+
+    header:hover {
+        transform: translateY(0);
+    }
 }

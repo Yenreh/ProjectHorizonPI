@@ -12,7 +12,7 @@ export default function DefinitionTab() {
   return (
     <section className="desease-content py-4 px-md-3">
       <Row className="align-items-center gy-4">
-        <Col md={6}>
+        <Col xs={12} md={12} lg={6} >
           <div className="desease-canvas-wrapper position-relative">
             {/* 3D Model Icon */}
             <div className="position-absolute bottom-0 end-0 p-2 desease-canvas-icon"> 
@@ -42,14 +42,15 @@ export default function DefinitionTab() {
                   anchorY={"middle"}
                   fontSize={0.08}
                 >
-                  Usa las flechas izquierda y derecha para rotar el modelo
+                  Usa las teclas A y D para rotar el modelo
                 </Text>
                 <OrbitControls enableZoom={false} enableRotate={true} enablePan={false} maxPolarAngle={Math.PI / 2} minPolarAngle={Math.PI / 2} />
               </Suspense>
             </Canvas>
           </div>
         </Col>
-        <Col md={6}>
+
+        <Col xs={12} md={12} lg={6} >
           <div className="disease-text-definition p-4">
             <h2 className="mb-3" style={{ color: 'var(--color-2)' }}>
               ¿Qué es la miopía?

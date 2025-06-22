@@ -32,34 +32,13 @@ export default function RdDefinition() {
               ¿Qué es?
             </h2>
             <p>
-              Imagina que tu ojo es como una cámara. La retina sería como el
-              "film" o la pantalla sensible a la luz que tienes al fondo. Es una
-              capa delgada de tejido que recibe la luz que entra en tu ojo y la
-              convierte en señales eléctricas. Estas señales viajan por el
-              nervio óptico hasta tu cerebro, ¡y así es como vemos el mundo! La
-              retina es fundamental para una visión clara.
-            </p>
-            <br></br>
-            <p>
-              Esta capa tan importante (la retina) está delicadamente apoyada en
-              la parte trasera de tu ojo y como cualquier parte de tu cuerpo, es
-              propensa a enfermedades. Una de ellas es el desprendimiento de
-              retina
-            </p>
-            <br></br>
-            <p>
-              El desprendimiento de retina ocurre cuando esta capa sensible a la
-              luz se separa o se "despega" de su posición normal. Piensa que
-              pierde su "base" de apoyo.
-            </p>
-            <br></br>
-            <p>
-              Al separarse, la retina deja de recibir los nutrientes y el
-              oxígeno que necesita para funcionar correctamente. Como resultado,
-              la parte de la retina que se ha desprendido deja de trabajar, lo
-              que provoca problemas serios en la visión. Es una emergencia
-              médica y requiere atención rápida para intentarevitar la pérdida
-              de visión permanente.
+              Imagina que tu ojo funciona como una cámara, y la retina es la
+              parte que capta la imagen: una capa delgada que transforma la luz
+              en señales para que tu cerebro pueda ver. Esta capa está pegada en
+              el fondo del ojo, y cuando se despega de su lugar, ocurre lo que
+              se llama desprendimiento de retina. Al separarse, deja de recibir
+              el oxígeno y nutrientes que necesita, lo que puede causar pérdida
+              de visión. Es una urgencia médica que requiere atención inmediata.
             </p>
           </div>
         </Col>
