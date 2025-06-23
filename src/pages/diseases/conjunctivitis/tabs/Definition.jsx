@@ -2,8 +2,9 @@ import { Suspense } from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import { Row, Col } from "react-bootstrap";
-import { IrritatedEye } from '../model-3d/IrritatedEye.jsx';
-import Lights  from "../Lights/Lights.jsx";
+import { IrritatedEye } from "../model-3d/IrritatedEye.jsx";
+import Lights from "../Lights/Lights.jsx";
+import DefinitionStaging from "../staging/DefinitionStaging.jsx";
 
 export default function Definition() {
   return (
@@ -14,6 +15,7 @@ export default function Definition() {
             <Canvas camera={{ position: [0, 0.5, 2.5] }} shadows>
               <Suspense fallback={null}>
                 <Lights />
+                <DefinitionStaging />
                 <IrritatedEye position={[0, 0, 0]} />
                 <mesh
                   receiveShadow
