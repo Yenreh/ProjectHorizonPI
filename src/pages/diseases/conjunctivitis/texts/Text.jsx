@@ -7,9 +7,9 @@ const Text = ({ textContent }) => {
   return (
     <Html
       center
-      position={[0.64, 0.9, 0]}
+      position={[0.52, 0.9, 0]}
       transform
-      distanceFactor={0.68}
+      distanceFactor={0.5}
       wrapperClass="title"
     >
       {lines.map((line, idx) => (

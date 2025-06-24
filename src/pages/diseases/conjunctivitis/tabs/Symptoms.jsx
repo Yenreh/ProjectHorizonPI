@@ -51,9 +51,9 @@ export default function Symptoms() {
   return (
     <section className="desease-content py-4 px-md-3">
       <Row className="align-items-center gy-4">
-        <Col md={6}>
-          <div className="desease-canvas-wrapper">
-            <div className="position-absolute bottom-0 end-0 p-2 desease-canvas-icon">
+        <Col xs={12} md={12} lg={6} >
+          <div className="desease-canvas-wrapper position-relative">
+            <div className="position-absolute bottom-0 end-0 p-2 desease-canvas-icon"> 
               <LuRotate3D title="Modelo 3D" />
             </div>
             <Canvas camera={{ position: [0, 0.5, 2.5], fov: 28 }} shadows>
