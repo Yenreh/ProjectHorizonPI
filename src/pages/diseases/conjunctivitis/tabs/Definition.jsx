@@ -5,6 +5,7 @@ import { Row, Col } from "react-bootstrap";
 import { IrritatedEye } from "../model-3d/IrritatedEye.jsx";
 import Lights from "../Lights/Lights.jsx";
 import DefinitionStaging from "../staging/DefinitionStaging.jsx";
+import { LuRotate3D } from "react-icons/lu";
 
 export default function Definition() {
   return (
@@ -12,6 +13,9 @@ export default function Definition() {
       <Row className="align-items-center gy-4">
         <Col md={6}>
           <div className="desease-canvas-wrapper">
+            <div className="position-absolute bottom-0 end-0 p-2 desease-canvas-icon"> 
+              <LuRotate3D title="Modelo 3D" />
+            </div>
             <Canvas camera={{ position: [0, 0.5, 2.5] }} shadows>
               <Suspense fallback={null}>
                 <Lights />
