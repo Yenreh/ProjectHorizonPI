@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, Outlet } from "react-router";
 import { Suspense, lazy } from "react";
 import Layout from "./layout/Layout";
 import "bootstrap/dist/css/bootstrap.min.css";
+import 'bootstrap-icons/font/bootstrap-icons.css';
 import "./index.css";
 
 const Home = lazy(() => import("./pages/home/Home"));
