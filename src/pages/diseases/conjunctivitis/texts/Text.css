@@ -1,6 +1,6 @@
-.title h3 {
-    background-color: rgba(134, 134, 134, 0.5);
-    color: rgb(2, 8, 115);
+.title h2 {
+    background-color: rgba(75, 74, 74, 0.5);
+    color: rgb(16, 22, 153);
     padding: 0.1em;
     border-radius: 6px;
   }

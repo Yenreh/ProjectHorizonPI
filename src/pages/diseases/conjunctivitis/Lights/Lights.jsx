@@ -10,7 +10,6 @@ export default function Lights() {
     <>
       <ambientLight intensity={3} />
       <directionalLight 
-        ref={directionalLightRef}
         position={[0, 10, 12]}
         castShadow
         shadow-mapSize-width={2048}
