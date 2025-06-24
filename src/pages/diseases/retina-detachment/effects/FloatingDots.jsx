@@ -69,7 +69,6 @@ export default function FloatingDots({
   useEffect(() => {
     const group = groupRef.current;
     if (group) {
-      // Asegurarse que el grupo empiece sin transformaciones relativas extrañas
       group.position.set(0, 0, 0);
       group.quaternion.identity(); // Usar identity() para resetear la rotación
       group.scale.set(1, 1, 1);
@@ -110,7 +109,6 @@ export default function FloatingDots({
         }
       };
     });
-    // Asegúrate de que las dependencias sean correctas para regenerar si cambian los props
   }, [count, areaWidth, areaHeight, distance, sizeRange, speedRange, amplitudeRange]);
 
 

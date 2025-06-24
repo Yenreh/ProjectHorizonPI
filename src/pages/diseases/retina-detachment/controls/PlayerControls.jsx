@@ -104,44 +104,44 @@ export function PlayerControls() {
     }
   });
 
-  // Si no esta bloqueado enseña las instrucciones
-  if (!isLocked) {
-    return (
-      <>
-        <PointerLockControls ref={controlsRef} args={[camera, gl.domElement]} />
-        <Html
-          as="div"
-          center
-          style={{
-            position: 'absolute',
-            top: '50%',
-            left: '50%',
-            transform: 'translate(-50%, -50%)',
-            width: '300px', // Give it some width
-            color: "white",
-            backgroundColor: "rgba(0,0,0,0.75)",
-            padding: "25px",
-            borderRadius: "15px",
-            textAlign: "center",
-            fontSize: "1.1em",
-            cursor: "pointer",
-            pointerEvents: 'auto', // Clickear el elemento
-            zIndex: 10000, // Elemento en el top
-          }}
-          onClick={() => {
-            controlsRef.current?.lock();
-          }}
-        >
-          Click para explorar
-          <br />
-          (W, A, S, D para moverse, MOUSE para mirar)
-          <br />
-          <br />
-          presiona ESC para liberar el mouse
-        </Html>
-      </>
-    );
-  }
+  // // Si no esta bloqueado enseña las instrucciones
+  // if (!isLocked) {
+  //   return (
+  //     <>
+  //       <PointerLockControls ref={controlsRef} args={[camera, gl.domElement]} />
+  //       <Html
+  //         as="div"
+  //         center
+  //         style={{
+  //           position: 'absolute',
+  //           top: '50%',
+  //           left: '50%',
+  //           transform: 'translate(-50%, -50%)',
+  //           width: '300px', // Give it some width
+  //           color: "white",
+  //           backgroundColor: "rgba(0,0,0,0.75)",
+  //           padding: "25px",
+  //           borderRadius: "15px",
+  //           textAlign: "center",
+  //           fontSize: "1.1em",
+  //           cursor: "pointer",
+  //           pointerEvents: 'auto', // Clickear el elemento
+  //           zIndex: 10000, // Elemento en el top
+  //         }}
+  //         onClick={() => {
+  //           controlsRef.current?.lock();
+  //         }}
+  //       >
+  //         Click para explorar
+  //         <br />
+  //         (W, A, S, D para moverse, MOUSE para mirar)
+  //         <br />
+  //         <br />
+  //         presiona ESC para liberar el mouse
+  //       </Html>
+  //     </>
+  //   );
+  // }
 
   // Si esta bloqueado renderiza los controles
   return <PointerLockControls ref={controlsRef} args={[camera, gl.domElement]} />;

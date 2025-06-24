@@ -67,7 +67,7 @@ export default function RdSymptoms() {
               {" "}
               <small>
                 Haz clic en la imagen de la izquierda para ver una simulación
-                interactiva de las moscas volantes.
+                interactiva de los sintomas.
               </small>
             </p>
           </div>

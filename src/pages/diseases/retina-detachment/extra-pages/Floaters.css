@@ -53,7 +53,7 @@ user-select: none;
   color: white;
   border-radius: 5px;
   font-size: 0.9rem;
-  max-width: 90%; /* Ajusta si es necesario */
+  max-width: 90%;
    backdrop-filter: blur(3px);
   -webkit-backdrop-filter: blur(3px);
   border: 1px solid rgba(255, 255, 255, 0.2); /* Borde sutil opcional */

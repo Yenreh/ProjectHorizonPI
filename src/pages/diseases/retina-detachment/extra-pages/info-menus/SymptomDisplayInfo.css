@@ -1,0 +1,81 @@
+/* SymptomDisplayInfo.css */
+.symptom-display-info-container {
+    position: fixed;
+    /* Centrado y en la parte inferior, o donde lo prefieras */
+    bottom: 3vh; /* Un poco más arriba */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%; /* Más ancho */
+    max-width: 800px; /* Pero no demasiado */
+    z-index: 1000; /* Sobre el canvas pero debajo del menú si se superponen */
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    pointer-events: none; /* Por defecto no captura eventos, el box sí */
+  }
+  
+  .symptom-display-info-box {
+    background-color: rgba(15, 15, 15, 0.9); /* Más oscuro */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    color: #e0e0e0; /* Color de texto base más claro */
+    padding: 25px 35px; /* Más padding */
+    border-radius: 12px; /* Más redondeado */
+    text-align: center;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+    border-top: 3px solid #007bff; /* Un acento de color arriba */
+    pointer-events: auto; /* Para que el texto sea seleccionable */
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+  }
+  
+  .symptom-display-info-container.initial-prompt .symptom-display-info-box {
+    /* Si queremos un estilo especial para el prompt inicial, por ejemplo: */
+    /* bottom: 50%; transform: translate(-50%, 50%); */
+    /* Lo dejamos como el resto por ahora, ya que el contenido es diferente */
+    border-top-color: #28a745; /* Verde para el prompt inicial */
+  }
+  
+  .symptom-display-info-box h2 {
+    font-size: 2em; /* Título más grande */
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: white; /* Título blanco brillante */
+    font-weight: 600;
+  }
+  
+  .symptom-display-info-box .explanation-text {
+    font-size: 1.15em; /* Texto explicativo más grande */
+    line-height: 1.7;
+    margin-bottom: 20px;
+    color: #cccccc;
+  }
+  
+  .symptom-display-info-box .instructions-text {
+    font-size: 1em; /* Instrucciones un poco más pequeñas pero claras */
+    color: #a0a0a0; /* Un gris más suave para instrucciones */
+    background-color: rgba(0,0,0,0.2);
+    padding: 10px 15px;
+    border-radius: 6px;
+    margin-top: 15px;
+    border-left: 3px solid #6c757d; /* Una barra lateral para las instrucciones */
+  }
+  
+  .symptom-display-info-container.initial-prompt .instructions-text strong {
+      color: #28a745; /* Verde para destacar el texto del prompt */
+      font-weight: bold;
+  }
+  
+  @media (max-width: 768px) {
+    .symptom-display-info-box {
+      padding: 20px 25px;
+    }
+    .symptom-display-info-box h2 {
+      font-size: 1.7em;
+    }
+    .symptom-display-info-box .explanation-text {
+      font-size: 1.05em;
+    }
+    .symptom-display-info-box .instructions-text {
+      font-size: 0.9em;
+    }
+  }
