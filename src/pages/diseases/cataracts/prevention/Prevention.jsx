@@ -9,7 +9,7 @@ import Staging from "./staging/Staging";
 import Lights from "./Lights/Lights";
 import TextVegetable from "./texts/TextVegetable";
 import { KeyboardControls, useKeyboardControls } from '@react-three/drei'
-import TextHtml from "./texts/TextHtml";
+import TextHtmlPrevention from "./texts/TextHtmlPrevention";
 
 export default function Prevention() {
   return (
@@ -25,7 +25,7 @@ export default function Prevention() {
                 { name: 'hear', keys: ['e', 'E'] },
               ]}
             >
-              <TextHtml />
+              <TextHtmlPrevention />
               <Staging />
               <Suspense fallback={null}>
                 <Lights />

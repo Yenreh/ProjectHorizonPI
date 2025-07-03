@@ -1,7 +1,7 @@
 
 .info-button-prevention {
   padding: 4px 8px;
-  font-size: 7px;
+  font-size: 14px;
   background: transparent;
   border-color: transparent;
   display: flex;
@@ -9,3 +9,10 @@
 
 }
 
+.classTitlePrevention {
+  position: absolute;
+  top: 45px !important; 
+  left: 118px !important;
+  right: 50px !important;
+  transform: none !important;
+}

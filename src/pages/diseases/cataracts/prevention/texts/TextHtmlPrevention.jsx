@@ -1,16 +1,16 @@
 import { Html } from '@react-three/drei';
 import './TitlePrevention.css'
 
-const TextHtml = () => {
+const TextHtmlPrevention = () => {
 
   return (
     <Html
       center
-      position={[-1.2, 1.6, 0.5]}
-      transform
-      distanceFactor={5}
-      wrapperClass="title"
-      scale={[1, 1, 1]}
+      // position={[-1.2, 1.6, 0.5]}
+      transform={false}
+      // distanceFactor={5}
+      wrapperClass="classTitlePrevention"
+      // scale={[1, 1, 1]}
     >
       <div style={{ position: 'relative', display: 'inline-block' }}>
         <h1
@@ -24,4 +24,4 @@ const TextHtml = () => {
   );
 };
 
-export default TextHtml;
+export default TextHtmlPrevention;
