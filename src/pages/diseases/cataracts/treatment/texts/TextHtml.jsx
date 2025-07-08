@@ -8,11 +8,11 @@ const TextHtml = ({ scaleX, posX, posY, posZ }) => {
   return (
     <Html
       center
-      position={[posX, posY, posZ]}
-      transform
-      distanceFactor={5}
-      wrapperClass="title"
-      scale={[scaleX, 1, 1]}
+      // position={[posX, posY, posZ]}
+      transform={false}
+      // distanceFactor={5}
+      wrapperClass="textTreatment"
+      // scale={[scaleX, 1, 1]}
     >
       <div style={{ position: 'relative', display: 'inline-block' }}>
         <button

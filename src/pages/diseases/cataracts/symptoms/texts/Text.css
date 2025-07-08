@@ -1,6 +1,14 @@
-.title h3 {
+.textSymotoms h3 {
     background: rgba(228, 229, 241, 0.8);
     color: black;
     padding: 0.2em;
-    border-radius: 1px;
+    border-radius: 7px;
+   width: 300px;
+   
   }
+
+.textSymotoms {
+  transform: none !important;
+  top: 40px !important;
+  left: 50% !important;
+}

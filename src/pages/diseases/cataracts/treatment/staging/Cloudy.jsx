@@ -7,7 +7,7 @@ import { BlendFunction } from 'postprocessing'
 const SceneCloudy = () => {
   return (
     <group>
-      <TextHtml scaleX={-1} posX={1.1} posY={1.4} posZ={0.9} />
+      {/* <TextHtml scaleX={-1} posX={1.1} posY={1.4} posZ={0.9} /> */}
       <Title title={"Sin tratamiento"} posY={0.5} posZ={1.5} />
       <Environment preset="park" background />
 

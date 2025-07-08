@@ -7,6 +7,7 @@ import { Glasses } from "./model-3d/Glasses";
 import Lights from "./Lights/Lights";
 import { LuRotate3D } from "react-icons/lu";
 import { KeyboardControls, useKeyboardControls } from '@react-three/drei'
+import TextHtml from './texts/TextHtml';
 
 export default function Treatment() {
   return (
@@ -26,6 +27,7 @@ export default function Treatment() {
             >
                <Suspense fallback={null}>
                 <Lights />
+                <TextHtml scaleX={1} posX={-1.1} posY={1.4} posZ={-1} />
                 <Glasses position={[0, -1, 0]}/>
 
               </Suspense>

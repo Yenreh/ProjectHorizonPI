@@ -14,6 +14,7 @@ export function Girl(props) {
   const [showGlasses, setShowGlasses] = useState(false)
   const [glassesAnimationTime, setGlassesAnimationTime] = useState(0)
   const [subscribeKeys, getKeys] = useKeyboardControls() //Events
+  const [textContent, setTextContent] = useState("¡Haz clic y presiona s!")
 
   const spring = useSpring({
     scale: showGlasses ? 1 : 0.001,
@@ -59,12 +60,14 @@ export function Girl(props) {
         targetCameraPos.current = initialCameraPos.current.clone()
         setShowClouds(false)
         setAnimationGirl(true)
+        setTextContent("¡Haz clic y presiona s!")
     }
 
     if (symptom) {
         targetCameraPos.current = new THREE.Vector3(0, 0.2, -0.3)
         setShowClouds(true)
         setAnimationGirl(false)
+        setTextContent("Presiona n para volver")
     }
 
     if (groupRef.current && animationGirl) {
@@ -124,6 +127,8 @@ export function Girl(props) {
       
       <mesh castShadow geometry={nodes.Hair.geometry} material={materials.Hair} />
 
+      <Text textContent={textContent} />
+
       {showClouds && (
         <>
         <EffectComposer>
@@ -131,7 +136,6 @@ export function Girl(props) {
           <ChromaticAberration offset={[0.005, 0.003]} />
           
         </EffectComposer>
-        <Text textContent={"Presiona n para volver"} scaleX={-1} posX={1.1} posY={1} posZ={6}/>
         </>
       )}
     </group>

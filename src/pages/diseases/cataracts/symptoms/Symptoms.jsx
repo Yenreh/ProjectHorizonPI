@@ -28,7 +28,6 @@ export default function Symptoms() {
                 <Suspense fallback={null}>
                           <Lights />
                           <Staging />
-                          <Text textContent={"¡Haz clic y presiona s!"} scaleX={1} posX={-0.5} posY={2.8} posZ={-3} />
                           <Girl position={[0, -1, -0.5]}/>
 
                 </Suspense>
