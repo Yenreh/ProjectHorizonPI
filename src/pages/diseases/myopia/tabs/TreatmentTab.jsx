@@ -56,12 +56,15 @@ export default function TreatmentTab() {
             <h2 className="mb-3" style={{ color: 'var(--color-2)' }}>
               Opciones de Tratamiento
             </h2>
-            <p>
-              <strong>Gafas:</strong> Corrigen la visión de lejos de forma sencilla y segura.<br />
-              <strong>Lentes de contacto:</strong> Alternativa estética y práctica para muchas personas.<br />
-              <strong>Cirugía refractiva:</strong> Opciones como LASIK pueden reducir o eliminar la dependencia de gafas/lentes.
-            </p>
-            <p>El tratamiento adecuado depende de la edad, estilo de vida y grado de miopía.</p>
+            <ul style={{ marginBottom: '1rem' }}>
+              <li><strong>Gafas:</strong> Son la forma más común y sencilla de ver bien si tienes miopía.</li>
+              <li><strong>Lentes de contacto:</strong> Pequeños lentes que se colocan en el ojo y pueden ser más cómodos para hacer deporte o actividades diarias.</li>
+              <li><strong>Operación láser:</strong> Una cirugía rápida que puede ayudar a dejar de usar gafas o lentes de contacto.</li>
+              <li><strong>Cuidados y revisiones:</strong> Es importante ir al oculista de vez en cuando para revisar que todo esté bien y que la miopía no avance.</li>
+              <li><strong>Para niños y jóvenes:</strong> Hay tratamientos especiales, como gotas o lentes especiales, que pueden ayudar a que la miopía no aumente tan rápido.</li>
+              <li><strong>Nuevas opciones:</strong> Cada vez hay más soluciones y tecnologías para ver mejor y cuidar tus ojos.</li>
+            </ul>
+            <p>El mejor tratamiento depende de cada persona. Lo más importante es consultar con un especialista para encontrar la opción que más se adapte a ti y a tu estilo de vida.</p>
           </div>
         </Col>
       </Row>
