@@ -7,7 +7,7 @@ const InfoButton = ({ buttonLabel = 'Info', iconClass = 'bi bi-info-circle-fill'
   return (
     <div style={{ position: 'relative', display: 'inline-block' }}>
       <button
-        className="info-button-cataracts"
+        className="info-button-general"
         onMouseEnter={() => setShowInfo(true)}
         onMouseLeave={() => setShowInfo(false)}
       >
@@ -16,7 +16,7 @@ const InfoButton = ({ buttonLabel = 'Info', iconClass = 'bi bi-info-circle-fill'
       </button>
 
       {showInfo && (
-        <div className='info-box-cataracts'>
+        <div className='info-box-general'>
           {children}
         </div>
       )}

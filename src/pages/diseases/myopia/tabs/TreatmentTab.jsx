@@ -7,6 +7,7 @@ import { Model as TreatmentModel } from '../model-3d/TreatmentModel.jsx';
 import TreatmentModelLights from '../Lights/TreatmentModelLights.jsx';
 import TreatmentStaging from '../Staging/TreatmentStaging.jsx';
 import InfoButton from '../Utils/InfoButton/InfoButton.jsx';
+import RotateButton from '../Utils/RotateButton/RotateButton.jsx';
 import { LuRotate3D } from "react-icons/lu";
 
 export default function TreatmentTab() {
@@ -26,13 +27,7 @@ export default function TreatmentTab() {
               <InfoButton buttonLabel="" iconClass="bi bi-info-circle-fill">
                 Usa el mouse para interactuar con el modelo 3D. ¡Haz click en el botón de girar del modelo para rotarlo!
               </InfoButton>
-              <button
-                onClick={() => setRotating((r) => !r)}
-                style={{ background: '#5c6bc0', color: '#fff', border: 'none', borderRadius: 8, padding: '0.4em 1em', fontWeight: 'bold', cursor: 'pointer' }}
-              >
-                {rotating ? 'Detener giro' : 'Girar modelo'}
-              </button>
-
+              <RotateButton onClick={() => setRotating((r) => !r)} isRotating={rotating} />
             </div>
             <Canvas camera={{ position: [0, 0.5, 2.5] }} shadows>
               <Suspense fallback={null}>
