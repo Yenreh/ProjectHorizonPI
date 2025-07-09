@@ -4,8 +4,7 @@ import { Row, Col } from "react-bootstrap";
 import SymptomsLights from "../Lights/SymptomsLights.jsx";
 import { FaceEye } from "../model-3d/FaceEye.jsx";
 import SymptomsControls from "../controls/SymptomsControls.jsx";
-import Text from "../texts/Text";
-import Staging from "../staging/SymptomsStaging.jsx";
+import SymptomsStaging from "../staging/SymptomsStaging.jsx";
 import { LuRotate3D } from "react-icons/lu";
 
 // Hook para controlar el zoom con la tecla Z
@@ -59,8 +58,7 @@ export default function Symptoms() {
             <Canvas camera={{ position: [0, 0.5, 2.5], fov: 28 }} shadows>
               <Suspense fallback={null}>
                 <SymptomsLights />
-                <Staging />
-                <Text textContent={"Mantén Z para hacer \n\n zoom en el ojo afectado"} />
+                <SymptomsStaging />
                 <FaceEye position={[0, 0, 0]} />
                 <mesh
                   receiveShadow
