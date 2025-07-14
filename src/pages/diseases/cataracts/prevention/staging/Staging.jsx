@@ -31,7 +31,7 @@ const Staging = () => {
         speed={1}
         />
 
-        <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -1, 0]} receiveShadow>
+        <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -0.7, 0]} receiveShadow>
             <planeGeometry args={[12, 10]} />
             <meshStandardMaterial {...floorTexture} />
             
