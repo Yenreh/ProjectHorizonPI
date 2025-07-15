@@ -1,8 +1,8 @@
 /* eslint-disable react/no-unknown-property */
 import { useRef, useState } from 'react';
-import { useGLTF, Html } from '@react-three/drei';
+import { useGLTF } from '@react-three/drei';
 import { useFrame } from '@react-three/fiber';
-import { KeyboardControls } from '@react-three/drei';
+import { EffectComposer, DepthOfField } from '@react-three/postprocessing';
 
 export function Model(props) {
     const { nodes, materials } = useGLTF('/models-3d/myopia/model-3.glb');
@@ -12,7 +12,7 @@ export function Model(props) {
     const [showInfo, setShowInfo] = useState(false);
     const rotating = props.rotating;
 
-    // Animación manual: rotación automática y por teclado
+    // Animación manual: rotación automática
     useFrame(({ clock }) => {
         if (groupRef.current) {
             if (rotating) {
@@ -23,28 +23,18 @@ export function Model(props) {
         }
     });
 
-    // Eventos de teclado (A/D para rotar, W/S para acercar/alejar)
-    const handleKeyDown = (e) => {
-        if (!groupRef.current) return;
-        if (e.key === 'a' || e.key === 'A') {
-            groupRef.current.rotation.y -= 0.1;
-        } else if (e.key === 'd' || e.key === 'D') {
-            groupRef.current.rotation.y += 0.1;
-        } else if (e.key === 'w' || e.key === 'W') {
-            groupRef.current.position.z = Math.max(groupRef.current.position.z - 0.1, -2);
-        } else if (e.key === 's' || e.key === 'S') {
-            groupRef.current.position.z = Math.min(groupRef.current.position.z + 0.1, 2);
-        }
-    };
-
     // Eventos de mouse
-    const handlePointerOver = () => {
+    const handlePointerOver = (e) => {
         setHovered(true);
         setColor('#ffe066');
+        if (e && e.target) {
+            document.body.style.cursor = 'pointer';
+        }
     };
-    const handlePointerOut = () => {
+    const handlePointerOut = (e) => {
         setHovered(false);
         setColor('#fff');
+        document.body.style.cursor = '';
     };
     const handleClick = () => {
         setShowInfo((v) => !v);
@@ -55,15 +45,18 @@ export function Model(props) {
     };
 
     return (
-        <KeyboardControls
-            map={[
-                { name: 'left', keys: ['a', 'A'] },
-                { name: 'right', keys: ['d', 'D'] },
-                { name: 'forward', keys: ['w', 'W'] },
-                { name: 'backward', keys: ['s', 'S'] },
-            ]}
-            onKeyDown={handleKeyDown}
-        >
+        <>
+            {/* Postprocesado: Blur al fondo, se desactiva al hacer hover en las gafas */}
+            <EffectComposer>
+                {!hovered && (
+                    <DepthOfField
+                        focusDistance={0.01}
+                        focalLength={0.02}
+                        bokehScale={4}
+                        height={480}
+                    />
+                )}
+            </EffectComposer>
             <group
                 {...props}
                 ref={groupRef}
@@ -105,10 +98,9 @@ export function Model(props) {
                     geometry={nodes.GooglesFrameJoins.geometry}
                     material={materials.GooglesFrameJoinsMaterial}
                 />
-                
             </group>
-        </KeyboardControls>
+        </>
     );
 }
 
-useGLTF.preload('/model-3.glb');
+useGLTF.preload('/models-3d/myopia/model-3.glb');

@@ -33,7 +33,7 @@ export default function TreatmentTab() {
               <Suspense fallback={null}>
                 <TreatmentStaging mode={1} />
                 <TreatmentModelLights mode={1} rotating={rotating} />
-                <TreatmentModel position={[0, 0, 0]}  scale={15} rotating={rotating} />
+                <TreatmentModel position={[0, 0, 0]}  scale={15} rotation={[0, Math.PI, 0]} />
                 
                 {/* Sombra */}
                 <mesh rotation-x={-Math.PI / 2} receiveShadow position-y={-1.2}>
