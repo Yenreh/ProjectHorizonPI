@@ -102,18 +102,15 @@ export default function PreventionTab() {
               Prevención y Cuidados
             </h2>
             <p>
-              La miopía es cada vez más común, pero ¡puedes proteger tu vista con hábitos sencillos! Aquí tienes recomendaciones fáciles de seguir para toda la familia:
+              La miopía es un problema visual que afecta a muchas personas, pero con información y atención puedes cuidar tu salud ocular. Consulta a un especialista si notas cambios en tu visión, especialmente si ves borroso de lejos o te cansas al leer. La prevención comienza con el conocimiento y la acción temprana.
             </p>
             <ul>
-              <li><b>Hazte revisiones oculares</b> al menos una vez al año, aunque veas bien.</li>
-              <li><b>Descansa tus ojos</b> cada 20 minutos si usas pantallas: mira a lo lejos y parpadea varias veces.</li>
-              <li><b>Pasa tiempo al aire libre</b> todos los días, la luz natural ayuda a mantener tus ojos sanos.</li>
-              <li><b>Evita leer o usar el móvil muy cerca</b> de tus ojos. Mantén una distancia cómoda.</li>
-              <li><b>Usa buena iluminación</b> al leer, estudiar o trabajar.</li>
-              <li><b>Cuida tu alimentación</b>: frutas, verduras y agua son aliados de tu salud visual.</li>
+              <li>Acude al oftalmólogo si tienes molestias o dudas sobre tu vista.</li>
+              <li>La detección temprana ayuda a evitar complicaciones.</li>
+              <li>Habla con tu familia sobre la importancia de cuidar los ojos.</li>
             </ul>
             <p style={{ marginTop: 16, color: '#1a237e', fontWeight: 500 }}>
-              ¡Pequeños cambios pueden marcar una gran diferencia para tu vista!
+              ¡Cuida tus ojos y disfruta de una mejor calidad de vida!
             </p>
           </div>
         </Col>
