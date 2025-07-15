@@ -8,17 +8,20 @@ export function DefinitionModel(props) {
     const { nodes, materials } = useGLTF('/models-3d/myopia/model-1.glb');
     const groupRef = useRef();
     const keysPressed = useModelStore((state) => state.keysPressed);
+    const activeTab = useModelStore((state) => state.activeTab);
 
     useFrame(({ clock }) => {
-        // Rotación automática
         if (groupRef.current) {
+            // Rotación automática
             groupRef.current.rotation.y += Math.sin(clock.getElapsedTime()) * 0.001;
 
-            // Rotación manual
-            if (keysPressed['A'] || keysPressed['a']) {
-                groupRef.current.rotation.y -= 0.02;
-            } else if (keysPressed['D'] || keysPressed['d']) {
-                groupRef.current.rotation.y += 0.02;
+            // Rotación manual solo si esta pestaña está activa
+            if (activeTab === 'definition') {
+                if (keysPressed['A'] || keysPressed['a']) {
+                    groupRef.current.rotation.y -= 0.02;
+                } else if (keysPressed['D'] || keysPressed['d']) {
+                    groupRef.current.rotation.y += 0.02;
+                }
             }
         }
     });
