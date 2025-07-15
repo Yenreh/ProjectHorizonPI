@@ -1,16 +1,16 @@
-import { Sky } from "@react-three/drei";
+import { Environment, Sparkles } from '@react-three/drei';
+
+
 
 const PreventionStaging = () => {
   return (
-    <Sky
-      sunPosition={[1, 2, 2]}
-      inclination={0.45}
-      azimuth={120}
-      mieCoefficient={0.03}
-      mieDirectionalG={0.1}
-      rayleigh={2.5}
-      turbidity={7}
-    />
+    <>
+      <Environment preset="studio" background />
+      {/* Efecto de partículas suaves para dar sensación de limpieza y modernidad */}
+      <Sparkles count={40} scale={8} size={1.5} color="#b3e5fc" speed={0.3} />
+      {/* Luz ambiental extra para suavizar sombras */}
+      <ambientLight intensity={0.15} color="#e3f2fd" />
+    </>
   );
 };
 
