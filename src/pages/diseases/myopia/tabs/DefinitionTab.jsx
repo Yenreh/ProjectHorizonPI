@@ -3,7 +3,7 @@ import { Suspense } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls, Text, ContactShadows } from '@react-three/drei';
 import { Row, Col } from 'react-bootstrap';
-import { DefinitionModel } from '../model-3d/DefinitionModel.jsx';
+import DefinitionModel from '../model-3d/DefinitionModel.jsx';
 import DefinitionModelLights from '../Lights/DefinitionModelLights.jsx';
 import DefinitionStaging from '../Staging/DefinitionStaging.jsx';
 import { LuRotate3D } from "react-icons/lu";

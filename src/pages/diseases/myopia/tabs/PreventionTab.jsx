@@ -3,7 +3,7 @@ import { Suspense } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
 import { Row, Col } from 'react-bootstrap';
-import { Model as PreventionModel } from '../model-3d/PreventionModel.jsx';
+import  PreventionModel  from '../model-3d/PreventionModel.jsx';
 
 export default function PreventionTab() {
   return (

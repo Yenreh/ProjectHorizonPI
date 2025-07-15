@@ -3,7 +3,7 @@ import { Suspense, useState } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls, Text, ContactShadows } from '@react-three/drei';
 import { Row, Col } from 'react-bootstrap';
-import { Model as TreatmentModel } from '../model-3d/TreatmentModel.jsx';
+import TreatmentModel from '../model-3d/TreatmentModel.jsx';
 import TreatmentModelLights from '../Lights/TreatmentModelLights.jsx';
 import TreatmentStaging from '../Staging/TreatmentStaging.jsx';
 import InfoButton from '../Utils/InfoButton/InfoButton.jsx';
