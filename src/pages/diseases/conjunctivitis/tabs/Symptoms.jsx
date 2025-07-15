@@ -50,16 +50,16 @@ export default function Symptoms() {
   return (
     <section className="desease-content py-4 px-md-3">
       <Row className="align-items-center gy-4">
-        <Col xs={12} md={12} lg={6} >
+        <Col xs={12} md={12} lg={6}>
           <div className="desease-canvas-wrapper position-relative">
-            <div className="position-absolute bottom-0 end-0 p-2 desease-canvas-icon"> 
+            <div className="position-absolute bottom-0 end-0 p-2 desease-canvas-icon">
               <LuRotate3D title="Modelo 3D" />
             </div>
             <Canvas camera={{ position: [0, 0.5, 2.5], fov: 28 }} shadows>
               <Suspense fallback={null}>
                 <SymptomsLights />
                 <SymptomsStaging />
-                <FaceEye position={[0, 0, 0]} />
+                <FaceEye position={[0, 0, 0]} rotation={[0, 0, 0]} />
                 <mesh
                   receiveShadow
                   rotation={[-Math.PI / 2, 0, 0]}
@@ -69,8 +69,8 @@ export default function Symptoms() {
                   <shadowMaterial opacity={0.7} />
                 </mesh>
                 <ZoomOnKey
-                  zoomPosition={[0.38, 0.25, 0.9]}
-                  defaultPosition={[0, 0.5, 2.5]}
+                  zoomPosition={[0.38, 0.25, -0.9]} // también invierte el z aquí
+                  defaultPosition={[0, 0.5, -2.5]}
                   setZoomed={setZoomed}
                 />
               </Suspense>
