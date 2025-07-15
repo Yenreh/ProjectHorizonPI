@@ -22,16 +22,16 @@ export default function SymptomsTab() {
                 <SymptomsStaging />
                 <SymptomsModelLights />
                 <SymptomsModel position={[0, 0, 0]} scale={6} />
-                <mesh rotation-x={-Math.PI / 2} receiveShadow={true} position-y={-1.4}>
-                  <circleGeometry args={[4, 8]} />
-                  <meshStandardMaterial roughness={0.8} metalness={1} />
+                <mesh rotation-x={-Math.PI / 2} receiveShadow position-y={-1.4}>
+                  <circleGeometry args={[4, 16]} />
+                  <meshStandardMaterial roughness={0.8} metalness={1} color="#e0e0e0" />
                 </mesh>
-                {/* Contact Shadows */}
+                {/* Contact Shadows mejoradas */}
                 <ContactShadows
                   position={[0, -1.3, 0]}
-                  opacity={0.5}
-                  scale={10}
-                  blur={2}
+                  opacity={0.6}
+                  scale={12}
+                  blur={2.5}
                   far={5}
                 />
                 {/* Help Text */}
@@ -42,9 +42,9 @@ export default function SymptomsTab() {
                   anchorY={"middle"}
                   fontSize={0.065}
                 >
-                  Puedes usar W,A,S,D para rotar y acercar/alejar el modelo
+                  Puedes usar W, A, S, D para rotar y acercar/alejar el modelo
                 </Text>
-                <OrbitControls enableZoom={false} enableRotate={true} enablePan={false} maxPolarAngle={Math.PI / 2} minPolarAngle={Math.PI / 2} />
+                <OrbitControls enableZoom={false} enableRotate enablePan={false} maxPolarAngle={Math.PI / 2} minPolarAngle={Math.PI / 2} />
               </Suspense>
             </Canvas>
           </div>

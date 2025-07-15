@@ -8,6 +8,7 @@ import useModelStore from '../stores/useModelStore';
 function Desease({ desease, tabs, Definitions }) {
     const [key, setKey] = useState('definition');
     const setKeyPressed = useModelStore((state) => state.setKeyPressed);
+    const setActiveTab = useModelStore((state) => state.setActiveTab);
 
     const preloadTab = (tab) => {
         const component = Definitions[tab];
@@ -31,6 +32,10 @@ function Desease({ desease, tabs, Definitions }) {
             window.removeEventListener('keyup', handleKeyUp);
         };
     }, [setKeyPressed]);
+
+    useEffect(() => {
+        setActiveTab(key);
+    }, [key, setActiveTab]);
 
     return (
         <Container fluid className="desease-container px-0">

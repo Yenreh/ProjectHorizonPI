@@ -3,7 +3,7 @@ import { Suspense, useState } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls, Text, ContactShadows } from '@react-three/drei';
 import { Row, Col } from 'react-bootstrap';
-import { Model as TreatmentModel } from '../model-3d/TreatmentModel.jsx';
+import TreatmentModel from '../model-3d/TreatmentModel.jsx';
 import TreatmentModelLights from '../Lights/TreatmentModelLights.jsx';
 import TreatmentStaging from '../Staging/TreatmentStaging.jsx';
 import InfoButton from '../Utils/InfoButton/InfoButton.jsx';
@@ -25,7 +25,7 @@ export default function TreatmentTab() {
             {/* Botones en la esquina superior derecha */}
             <div style={{ position: 'absolute', top: 10, left: 10, zIndex: 2, display: 'flex', gap: 8 }}>
               <InfoButton buttonLabel="" iconClass="bi bi-info-circle-fill">
-                Usa el mouse para interactuar con el modelo 3D. ¡Haz click en el botón de girar del modelo para rotarlo!
+                Pasa el mouse sobre las gafas para para interactuar. ¡Haz click en el botón de girar del modelo para rotarlo!
               </InfoButton>
               <RotateButton onClick={() => setRotating((r) => !r)} isRotating={rotating} />
             </div>
@@ -33,7 +33,7 @@ export default function TreatmentTab() {
               <Suspense fallback={null}>
                 <TreatmentStaging mode={1} />
                 <TreatmentModelLights mode={1} rotating={rotating} />
-                <TreatmentModel position={[0, 0, 0]}  scale={15} rotating={rotating} />
+                <TreatmentModel position={[0, 0, 0]}  scale={15} rotating={rotating} rotation={[0, Math.PI, 0]} />
                 
                 {/* Sombra */}
                 <mesh rotation-x={-Math.PI / 2} receiveShadow position-y={-1.2}>
