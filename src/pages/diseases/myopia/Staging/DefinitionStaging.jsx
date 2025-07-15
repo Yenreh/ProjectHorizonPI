@@ -5,14 +5,14 @@ const DefinitionStaging = () => {
   return (
     <>
       <Sky
-      sunPosition={[0.5, 0, -2]}
-      inclination={0.5} 
-      azimuth={180} 
-      mieCoefficient={0.05} 
-      mieDirectionalG={0.05} 
-      rayleigh={3} 
-      turbidity={10} 
-    />
+        sunPosition={[0.5, 1, -2]}
+        inclination={0.55}
+        azimuth={180}
+        mieCoefficient={0.04}
+        mieDirectionalG={0.08}
+        rayleigh={3.5}
+        turbidity={9}
+      />
     </>
   );
 };

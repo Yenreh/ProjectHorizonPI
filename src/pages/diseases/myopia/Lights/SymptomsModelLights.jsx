@@ -5,26 +5,31 @@ import { MathUtils } from 'three';
 
 export default function SymptomsModelLights() {
     const directionalLightRef = useRef();
-  
+
     useFrame((state) => {
-      const elapsedTime = state.clock.getElapsedTime();
-      directionalLightRef.current.position.x = MathUtils.lerp(
-        -1,
-        1,
-        Math.cos(elapsedTime) * 0.4 
-      );
+        const elapsedTime = state.clock.getElapsedTime();
+        if (directionalLightRef.current) {
+            directionalLightRef.current.position.x = MathUtils.lerp(
+                -1,
+                1,
+                (Math.cos(elapsedTime) * 0.5 + 0.5)
+            );
+        }
     });
 
-  return (
-    <>
-      <ambientLight color={"#F5F5DC"} intensity={2} />
-      <directionalLight
-        ref={directionalLightRef}
-        color={"white"}
-        position={[0, 5, 5]}
-        intensity={5}
-        castShadow={true}
-      />
-    </>
-  )
+    return (
+        <>
+            <ambientLight color={"#F5F5DC"} intensity={1.2} />
+            <directionalLight
+                ref={directionalLightRef}
+                color={"white"}
+                position={[0, 5, 5]}
+                intensity={3}
+                castShadow
+                shadow-mapSize-width={1024}
+                shadow-mapSize-height={1024}
+                shadow-bias={-0.0005}
+            />
+        </>
+    );
 }

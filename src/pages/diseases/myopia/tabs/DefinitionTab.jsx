@@ -23,17 +23,17 @@ export default function DefinitionTab() {
                 <DefinitionModelLights />
                 <DefinitionStaging />
                 <DefinitionModel position={[0, 0, 0]} scale={100} rotation={[Math.PI, 0, 0]} />
-                <mesh receiveShadow={true} rotation={[-Math.PI / 2, 0, 0]} position={[0, -1.4, 0]}>
+                <mesh receiveShadow rotation={[-Math.PI / 2, 0, 0]} position={[0, -1.4, 0]}>
                   <planeGeometry args={[15, 15]} />
                   <meshStandardMaterial color="white" roughness={0.8} metalness={1} />
                 </mesh>
-                {/* Contact Shadows */}
+                {/* Contact Shadows mejoradas */}
                 <ContactShadows
                   position={[0, -1.3, 0]}
-                  opacity={0.5}
-                  scale={10}
-                  blur={2}
-                  far={2}
+                  opacity={0.6}
+                  scale={12}
+                  blur={2.5}
+                  far={2.5}
                 />
                 <Text
                   position={[0, 1.2, 0.8]}
@@ -44,7 +44,7 @@ export default function DefinitionTab() {
                 >
                   Usa las teclas A y D para rotar el modelo
                 </Text>
-                <OrbitControls enableZoom={false} enableRotate={true} enablePan={false} maxPolarAngle={Math.PI / 2} minPolarAngle={Math.PI / 2} />
+                <OrbitControls enableZoom={false} enableRotate enablePan={false} maxPolarAngle={Math.PI / 2} minPolarAngle={Math.PI / 2} />
               </Suspense>
             </Canvas>
           </div>

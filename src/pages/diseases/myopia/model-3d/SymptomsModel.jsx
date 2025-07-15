@@ -10,21 +10,23 @@ export function SymptomsModel(props) {
     const keysPressed = useModelStore((state) => state.keysPressed);
 
     useFrame(({ clock }) => {
-        // Rotación automática leve
-        groupRef.current.rotation.y += Math.sin(clock.getElapsedTime()) * 0.001;
+        if (groupRef.current) {
+            // Rotación automática leve
+            groupRef.current.rotation.y += Math.sin(clock.getElapsedTime()) * 0.001;
 
-        // Rotación manual
-        if (keysPressed['A']) {
-            groupRef.current.rotation.y -= 0.02;
-        } else if (keysPressed['D']) {
-            groupRef.current.rotation.y += 0.02;
-        }
+            // Rotación manual
+            if (keysPressed['A'] || keysPressed['a']) {
+                groupRef.current.rotation.y -= 0.02;
+            } else if (keysPressed['D'] || keysPressed['d']) {
+                groupRef.current.rotation.y += 0.02;
+            }
 
-        // Traslación manual en el eje Z
-        if (keysPressed['W']) {
-            groupRef.current.position.z = Math.max(groupRef.current.position.z - 0.1, -5);
-        } else if (keysPressed['S']) {
-            groupRef.current.position.z = Math.min(groupRef.current.position.z + 0.1, 5);
+            // Traslación manual en el eje Z
+            if (keysPressed['W'] || keysPressed['w']) {
+                groupRef.current.position.z = Math.max(groupRef.current.position.z - 0.1, -5);
+            } else if (keysPressed['S'] || keysPressed['s']) {
+                groupRef.current.position.z = Math.min(groupRef.current.position.z + 0.1, 5);
+            }
         }
     });
 
@@ -34,6 +36,7 @@ export function SymptomsModel(props) {
                 geometry={nodes.SnellenTable.geometry}
                 material={materials.SnellenTableMaterial}
                 castShadow
+                receiveShadow
             />
         </group>
     );
@@ -41,5 +44,5 @@ export function SymptomsModel(props) {
 
 export default SymptomsModel;
 
-useGLTF.preload('/model-2.glb');
+useGLTF.preload('/models-3d/myopia/model-2.glb');
 
