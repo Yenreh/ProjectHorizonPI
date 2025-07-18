@@ -3,7 +3,7 @@ import { NavLink, useLocation } from "react-router"; // Import useLocation
 import { Button, Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
 import "./Header.css";
 
-const Header = () => {
+const Header = ({ onLoginClick }) => {
     const [menuOpen, setMenuOpen] = useState(false);
     const [isHidden, setIsHidden] = useState(false);
     const location = useLocation(); 
@@ -96,7 +96,11 @@ const Header = () => {
                                     variant="primary"
                                     size="sm"
                                     className="h-100 ms-lg-3"
-                                    onClick={() => alert("Login clicked!")}
+                                    // onClick={() => alert("Login clicked!")}
+                                    onClick={() => { 
+                                        console.log("Botón presionado"); 
+                                        onLoginClick(); 
+                                        }}
                                 >
                                     Iniciar sesión
                                 </Button>
