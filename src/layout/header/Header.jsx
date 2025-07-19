@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { NavLink, useLocation } from "react-router"; // Import useLocation
 import { Button, Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
 import useAuthStore from "../../stores/use-auth-store";
+import { OverlayTrigger, Tooltip } from "react-bootstrap";
 import "./Header.css";
 
 const Header = ({ onLoginClick }) => {
@@ -112,8 +113,28 @@ const Header = ({ onLoginClick }) => {
                                     Cerrar sesión
                                 </Button>
                             </Nav.Item>
-                            <Nav.Item className="me-2">
-                                    <span >Hola, {userLooged.displayName}</span>
+                              <Nav.Item className="ms-lg-3 mt-2">
+                                <OverlayTrigger
+                                placement="bottom"
+                                overlay={<Tooltip id="user-tooltip">{userLooged.displayName}</Tooltip>}
+                                >
+                                <Button
+                                    variant="light"
+                                    className="p-0 border-0"
+                                    style={{
+                                    width: "40px",
+                                    height: "40px",
+                                    borderRadius: "50%",
+                                    overflow: "hidden",
+                                    }}
+                                >
+                                    <img
+                                    src={userLooged.photoURL}
+                                    alt={userLooged.displayName}
+                                    style={{ width: "100%", height: "100%", objectFit: "cover", display: "block",  }}
+                                    />
+                                </Button>
+                                </OverlayTrigger>
                             </Nav.Item>
                             </>
                             ) : (
