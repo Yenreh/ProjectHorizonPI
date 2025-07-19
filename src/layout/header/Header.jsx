@@ -122,10 +122,11 @@ const Header = ({ onLoginClick }) => {
                                     variant="light"
                                     className="p-0 border-0"
                                     style={{
-                                    width: "40px",
-                                    height: "40px",
+                                    width: "30px",
+                                    height: "30px",
                                     borderRadius: "50%",
                                     overflow: "hidden",
+                                    margin: "auto",
                                     }}
                                 >
                                     <img

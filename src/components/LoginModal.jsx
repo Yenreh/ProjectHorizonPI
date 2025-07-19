@@ -14,7 +14,6 @@ export default function LoginModal({ visible, onClose }) {
     loginGoogleWithPopUp()
       .then(() => {
         onClose();
-        navigate("/cataratas")
       })
         
       .catch(() => navigate("/"));
