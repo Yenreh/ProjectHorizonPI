@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { NavLink, useLocation } from "react-router"; // Import useLocation
 import { Button, Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
+import useAuthStore from "../../stores/use-auth-store";
 import "./Header.css";
 
 const Header = ({ onLoginClick }) => {
@@ -19,6 +20,8 @@ const Header = ({ onLoginClick }) => {
     const isDeseaseActive = deseases.some((disease) =>
         location.pathname.includes(disease.name)
     ); 
+
+    const { userLooged, logout } = useAuthStore();
 
     useEffect(() => {
         let lastScrollY = window.scrollY;
@@ -91,6 +94,30 @@ const Header = ({ onLoginClick }) => {
                                     Quiz
                                 </Nav.Link>
                             </Nav.Item>
+
+                            {userLooged ? (
+                                <>
+
+                            <Nav.Item>
+                                <Button
+                                    variant="primary"
+                                    size="sm"
+                                    className="h-100 ms-lg-3"
+                                    // onClick={() => alert("Login clicked!")}
+                                    onClick={() => { 
+                                        console.log("Botón presionado"); 
+                                        logout();
+                                        }}
+                                >
+                                    Cerrar sesión
+                                </Button>
+                            </Nav.Item>
+                            <Nav.Item className="me-2">
+                                    <span >Hola, {userLooged.displayName}</span>
+                            </Nav.Item>
+                            </>
+                            ) : (
+                            <>
                             <Nav.Item>
                                 <Button
                                     variant="primary"
@@ -105,6 +132,9 @@ const Header = ({ onLoginClick }) => {
                                     Iniciar sesión
                                 </Button>
                             </Nav.Item>
+                            
+                            </>
+                            )}
                         </Nav>
                     </Navbar.Collapse>
                 </Container>
