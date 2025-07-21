@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
 import { NavLink, useLocation } from "react-router"; // Import useLocation
 import { Button, Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
+import useAuthStore from "../../stores/use-auth-store";
+import { OverlayTrigger, Tooltip } from "react-bootstrap";
 import "./Header.css";
 
-const Header = () => {
+const Header = ({ onLoginClick }) => {
     const [menuOpen, setMenuOpen] = useState(false);
     const [isHidden, setIsHidden] = useState(false);
     const location = useLocation(); 
@@ -19,6 +21,8 @@ const Header = () => {
     const isDeseaseActive = deseases.some((disease) =>
         location.pathname.includes(disease.name)
     ); 
+
+    const { userLooged, logout } = useAuthStore();
 
     useEffect(() => {
         let lastScrollY = window.scrollY;
@@ -91,16 +95,68 @@ const Header = () => {
                                     Quiz
                                 </Nav.Link>
                             </Nav.Item>
+
+                            {userLooged ? (
+                                <>
+
                             <Nav.Item>
                                 <Button
                                     variant="primary"
                                     size="sm"
                                     className="h-100 ms-lg-3"
-                                    onClick={() => alert("Login clicked!")}
+                                    // onClick={() => alert("Login clicked!")}
+                                    onClick={() => { 
+                                        console.log("Botón presionado"); 
+                                        logout();
+                                        }}
+                                >
+                                    Cerrar sesión
+                                </Button>
+                            </Nav.Item>
+                              <Nav.Item className="ms-lg-3 mt-2">
+                                <OverlayTrigger
+                                placement="bottom"
+                                overlay={<Tooltip id="user-tooltip">{userLooged.displayName}</Tooltip>}
+                                >
+                                <Button
+                                    variant="light"
+                                    className="p-0 border-0"
+                                    style={{
+                                    width: "30px",
+                                    height: "30px",
+                                    borderRadius: "50%",
+                                    overflow: "hidden",
+                                    margin: "auto",
+                                    }}
+                                >
+                                    <img
+                                    src={userLooged.photoURL}
+                                    alt={userLooged.displayName}
+                                    style={{ width: "100%", height: "100%", objectFit: "cover", display: "block",  }}
+                                    />
+                                </Button>
+                                </OverlayTrigger>
+                            </Nav.Item>
+                            </>
+                            ) : (
+                            <>
+                            <Nav.Item>
+                                <Button
+                                    variant="primary"
+                                    size="sm"
+                                    className="h-100 ms-lg-3"
+                                    // onClick={() => alert("Login clicked!")}
+                                    onClick={() => { 
+                                        console.log("Botón presionado"); 
+                                        onLoginClick(); 
+                                        }}
                                 >
                                     Iniciar sesión
                                 </Button>
                             </Nav.Item>
+                            
+                            </>
+                            )}
                         </Nav>
                     </Navbar.Collapse>
                 </Container>
