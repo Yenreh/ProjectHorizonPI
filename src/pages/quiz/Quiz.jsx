@@ -73,37 +73,33 @@ export default function QuizPrincipal() {
    *
    * @param {string} respuesta - La etiqueta de la opción seleccionada por el usuario.
    */
+  // Bandera para evitar sumar puntaje más de una vez por pregunta
+  const [puntajeSumado, setPuntajeSumado] = useState(false);
   const avanzar = useCallback((respuesta) => {
-    if (respondida) return; // Evitar múltiples respuestas a la misma pregunta
+    if (respondida) return;
 
-    console.log(`Pregunta ${indice + 1}: ${respuesta} (Correcta: ${pregunta.correcta})`);
-
-    setRespondida(true); // Marcar la pregunta como respondida
-    setRespuestaSeleccionada(respuesta); // Guardar la respuesta seleccionada
-    setMostrarResultado(true); // Mostrar el mensaje de resultado
+    setRespondida(true);
+    setRespuestaSeleccionada(respuesta);
+    setMostrarResultado(true);
 
     const esCorrecta = respuesta === pregunta.correcta;
-    if (esCorrecta) {
-      setPuntaje(puntajeActual => {
-        const nuevoPuntaje = puntajeActual + 1;
-        console.log(`Puntaje actualizado: ${nuevoPuntaje}`);
-        return nuevoPuntaje;
-      });
+    if (esCorrecta && !puntajeSumado) {
+      setPuntaje(puntajeActual => puntajeActual + 1);
+      setPuntajeSumado(true);
     }
 
-    // Temporizador para pasar a la siguiente pregunta o a la pantalla final
     setTimeout(() => {
       if (indice < preguntas.length - 1) {
         setIndice(indice + 1);
         setRespondida(false);
         setMostrarResultado(false);
         setRespuestaSeleccionada("");
+        setPuntajeSumado(false);
       } else {
-        // Quiz completado: fuerza el índice fuera del rango para mostrar resultados
         setIndice(preguntas.length);
       }
     }, 3000);
-  }, [respondida, indice, pregunta?.correcta]); // Dependencias del useCallback
+  }, [respondida, indice, pregunta?.correcta, puntajeSumado]);
 
   /**
    * Función para reiniciar el quiz desde el principio.

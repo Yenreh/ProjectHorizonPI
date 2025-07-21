@@ -204,7 +204,7 @@ export function BolaCatapulta({ respondida, color, preguntaIndex, resetBolaFlag 
   const [isCharging, setIsCharging] = useState(false);
   const [power, setPower] = useState(0);
   const [aimDirection, setAimDirection] = useState(new THREE.Vector3());
-  // Resetear posición y velocidades al cambiar preguntaIndex o resetBolaFlag
+  // Resetear posición y todos los estados internos al cambiar preguntaIndex o resetBolaFlag
   useEffect(() => {
     if (bolaRef.current) {
       bolaRef.current.setTranslation(initialPosition.current, true);
@@ -214,6 +214,7 @@ export function BolaCatapulta({ respondida, color, preguntaIndex, resetBolaFlag 
     setIsCharging(false);
     setPower(0);
     setAimDirection(new THREE.Vector3());
+    // Si hay otros estados internos, reiniciarlos aquí
   }, [preguntaIndex, resetBolaFlag]);
 
   const handlePointerDown = useCallback((e) => {
@@ -266,7 +267,7 @@ export function BolaCatapulta({ respondida, color, preguntaIndex, resetBolaFlag 
     <>
       <RigidBody
         ref={bolaRef}
-        key={`bola-catapulta-${preguntaIndex}`}
+        key={`bola-catapulta-${preguntaIndex}-${resetBolaFlag}`}
         colliders="ball"
         position={initialPosition.current}
         restitution={0.5}
@@ -325,7 +326,7 @@ export function SistemaBowling({ respondida, color, preguntaIndex, resetBolaFlag
   const { gl, camera, raycaster, pointer } = useThree();
   const [isAiming, setIsAiming] = useState(false);
   const [velocity, setVelocity] = useState(new THREE.Vector3());
-  // Resetear posición y velocidades al cambiar preguntaIndex o resetBolaFlag
+  // Resetear posición y todos los estados internos al cambiar preguntaIndex o resetBolaFlag
   useEffect(() => {
     if (bolaRef.current) {
       bolaRef.current.setTranslation(initialPosition.current, true);
@@ -334,6 +335,7 @@ export function SistemaBowling({ respondida, color, preguntaIndex, resetBolaFlag
     }
     setIsAiming(false);
     setVelocity(new THREE.Vector3());
+    // Si hay otros estados internos, reiniciarlos aquí
   }, [preguntaIndex, resetBolaFlag]);
 
   const handlePointerMove = useCallback((e) => {
@@ -378,7 +380,7 @@ export function SistemaBowling({ respondida, color, preguntaIndex, resetBolaFlag
     <>
       <RigidBody
         ref={bolaRef}
-        key={`bola-bowling-${preguntaIndex}`}
+        key={`bola-bowling-${preguntaIndex}-${resetBolaFlag}`}
         colliders="ball"
         position={initialPosition.current}
         restitution={0.1}
