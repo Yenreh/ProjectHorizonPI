@@ -13,6 +13,7 @@ const RetinaDetachment = lazy(() => import("./pages/diseases/retina-detachment/R
 const Floaters = lazy(() => import("./pages/diseases/retina-detachment/extra-pages/Floaters.jsx"));
 const Conjunctivitis = lazy(() => import("./pages/diseases/conjunctivitis/Conjunctivitis.jsx"));
 const NotFound = lazy(() => import("./pages/not-found/NotFound"));
+const Quiz = lazy(() => import("./pages/quiz/Quiz.jsx"));
 
 createRoot(document.getElementById("root")).render(
   <BrowserRouter>
@@ -26,6 +27,7 @@ createRoot(document.getElementById("root")).render(
             <Route path="/miopia" element={<Myopia />} />
             <Route path="/desprendimiento_retina" element={<RetinaDetachment />} />
             <Route path="/conjuntivitis" element={<Conjunctivitis />} />
+            <Route path="/quiz" element={<Quiz />} />
         </Route>
 
         {/* Rutas sin Layout (pantalla completa) */}
