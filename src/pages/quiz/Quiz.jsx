@@ -58,6 +58,8 @@ const preguntas = [
  * y la renderización de las mecánicas 3D.
  */
 export default function QuizPrincipal() {
+  // Ref para bloquear múltiples respuestas por pregunta
+  const respondidaRef = React.useRef(false);
   const [indice, setIndice] = useState(0); // Índice de la pregunta actual
   const [puntaje, setPuntaje] = useState(0); // Puntaje del usuario
   const [respondida, setRespondida] = useState(false); // Indica si la pregunta actual ya fue respondida
@@ -73,33 +75,29 @@ export default function QuizPrincipal() {
    *
    * @param {string} respuesta - La etiqueta de la opción seleccionada por el usuario.
    */
-  // Bandera para evitar sumar puntaje más de una vez por pregunta
-  const [puntajeSumado, setPuntajeSumado] = useState(false);
   const avanzar = useCallback((respuesta) => {
-    if (respondida) return;
-
+    if (respondidaRef.current) return;
+    respondidaRef.current = true;
     setRespondida(true);
     setRespuestaSeleccionada(respuesta);
     setMostrarResultado(true);
 
-    const esCorrecta = respuesta === pregunta.correcta;
-    if (esCorrecta && !puntajeSumado) {
+    if (respuesta === pregunta.correcta) {
       setPuntaje(puntajeActual => puntajeActual + 1);
-      setPuntajeSumado(true);
     }
 
     setTimeout(() => {
+      respondidaRef.current = false;
       if (indice < preguntas.length - 1) {
         setIndice(indice + 1);
         setRespondida(false);
         setMostrarResultado(false);
         setRespuestaSeleccionada("");
-        setPuntajeSumado(false);
       } else {
         setIndice(preguntas.length);
       }
     }, 3000);
-  }, [respondida, indice, pregunta?.correcta, puntajeSumado]);
+  }, [indice, pregunta?.correcta]);
 
   /**
    * Función para reiniciar el quiz desde el principio.
@@ -194,6 +192,7 @@ export default function QuizPrincipal() {
               showResult={mostrarResultado && respuestaSeleccionada === opcion}
               onHit={avanzar}
               preguntaIndex={indice}
+              respondida={respondida}
             />
           ))}
         </Physics>
