@@ -27,6 +27,14 @@ const preguntas = [
     instruccion: "Arrastra la bola azul hacia la opción correcta"
   },
   {
+    texto: "¿Qué síntoma es común en la conjuntivitis?",
+    opciones: ["Ojo rojo", "Visión doble", "Dolor de cabeza", "Ceguera súbita"],
+    correcta: "Ojo rojo",
+    mecanica: "catapulta",
+    color: "#ef4444",
+    instruccion: "Mantén presionado, apunta y suelta para lanzar la bola roja"
+  },
+  {
     texto: "¿Cuál es un síntoma común de la miopía?",
     opciones: [
       "Dificultad para ver de lejos",
@@ -35,17 +43,9 @@ const preguntas = [
       "Visión doble"
     ],
     correcta: "Dificultad para ver de lejos",
-    mecanica: "impulso",
+    mecanica: "arrastrar",
     color: "#10b981",
-    instruccion: "Haz clic en cualquier lugar para empujar la bola verde hacia adelante"
-  },
-  {
-    texto: "¿Qué síntoma es común en la conjuntivitis?",
-    opciones: ["Ojo rojo", "Visión doble", "Dolor de cabeza", "Ceguera súbita"],
-    correcta: "Ojo rojo",
-    mecanica: "catapulta",
-    color: "#ef4444",
-    instruccion: "Mantén presionado, apunta y suelta para lanzar la bola roja"
+    instruccion: "Arrastra la bola verde hacia la opción correcta"
   },
   {
     texto: "¿Qué ocurre en el desprendimiento de retina?",
