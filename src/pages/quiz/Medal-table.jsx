@@ -1,23 +1,24 @@
 import React, { useEffect, useState } from "react";
 import { Canvas } from "@react-three/fiber";
-import { OrbitControls, Text } from "@react-three/drei"; // ⬅️ Importamos Text
+import { OrbitControls, Text } from "@react-three/drei";
 import useUserStore from "../../stores/use-user-store";
 
-function Podio({ nombre, puntaje, position, color = "gold" }) {
+function CeldaTabla3D({ texto, position, ancho=4, largo = 1, color }) {
   return (
     <group position={position}>
       <mesh>
-        <boxGeometry args={[1, puntaje / 2 || 1, 1]} />
+        <boxGeometry args={[ancho, largo, 0.2]} />
         <meshStandardMaterial color={color} />
       </mesh>
       <Text
-        position={[0, (puntaje / 2 || 1) + 0.5, 0]} // Encima del podio
+        position={[0, 0, 0.2]}
         fontSize={0.3}
         color="black"
         anchorX="center"
         anchorY="middle"
+        font="fonts/Montserrat-Bold.ttf"
       >
-        {`${nombre} (${puntaje})`}
+        {texto}
       </Text>
     </group>
   );
@@ -30,57 +31,52 @@ function MedalleroCanvas() {
   useEffect(() => {
     (async () => {
       const data = await fetchUsers();
-      setUsuarios(data.slice(0, 3)); // 🔽 Solo los 3 mejores
+      setUsuarios(data.sort((a, b) => b.puntaje - a.puntaje));
     })();
   }, []);
 
   return (
 <Canvas
-  style={{ width: "100%", height: "400px", borderRadius: "12px" }}
+  style={{ width: "900px", height: "400px", borderRadius: "12px" }}
   shadows
-  camera={{ position: [5, 3, 8], fov: 45 }}
+  camera={{ position: [0, 0, 10], fov: 45 }}
 >
-  {/* Fondo cielo suave */}
-  <color attach="background" args={["#e0f7ff"]} />
-
-  {/* Luz ambiental */}
+  {/* <color attach="background" args={["#e0f7ff"]} /> */}
   <ambientLight intensity={0.5} />
+  <directionalLight position={[5, 10, 5]} intensity={1} castShadow />
 
-  {/* Luz direccional con sombras */}
-  <directionalLight
-    position={[5, 10, 5]}
-    intensity={1}
-    castShadow
-    shadow-mapSize-width={1024}
-    shadow-mapSize-height={1024}
-  />
+  <OrbitControls enablePan={false} maxPolarAngle={Math.PI / 2.1} minPolarAngle={Math.PI / 3} />
 
-  {/* Piso */}
-  <mesh receiveShadow rotation={[-Math.PI / 2, 0, 0]} position={[0, -0.01, 0]}>
-    <planeGeometry args={[20, 20]} />
-    <shadowMaterial opacity={0.2} />
-  </mesh>
-
-  {/* Controles con ángulo limitado */}
-  <OrbitControls
-    enablePan={false}
-    maxPolarAngle={Math.PI / 2.1}
-    minPolarAngle={Math.PI / 3}
-  />
-
-  {/* Podios en vertical */}
-  {usuarios.map((user, i) => (
-    <Podio
-      key={user.nombre}
-      nombre={user.nombre}
-      puntaje={user.puntaje}
-      position={[0, i * 2, 0]} // Vertical
-      color={i === 0 ? "gold" : i === 1 ? "silver" : "#8B4513"}
+  {/* Encabezados */}
+  {["Posición", "Nombre", "Puntaje"].map((titulo, colIndex) => (
+    <CeldaTabla3D
+      key={`header-${colIndex}`}
+      texto={titulo}
+      position={[colIndex * 4.2 - 4, 0 + 3, 0]}
+      color="#a1c4fd"
     />
   ))}
+
+  {/* Filas de datos */}
+  {usuarios.map((user, filaIndex) => {
+    const row = [
+      `#${filaIndex + 1}`,
+      user.nombre.split(" ").slice(0, 2).join(" "),
+      user.puntaje.toString()
+    ];
+
+    return row.map((texto, colIndex) => (
+      <CeldaTabla3D
+        key={`celda-${filaIndex}-${colIndex}`}
+        texto={texto}
+        position={[colIndex * 4.2 - 4, -(filaIndex + 1) * 1.2 + 3, 0]}
+        color={filaIndex % 2 === 0 ? "#f0f0f0" : "#f0f0f0"}
+      />
+    ));
+  })}
 </Canvas>
+
   );
 }
 
 export default MedalleroCanvas;
-
