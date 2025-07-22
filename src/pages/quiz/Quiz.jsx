@@ -6,6 +6,9 @@ import { Environment3D, Suelo, Paredes } from './Environment3D'; // Importar com
 import { BolaArrastrable, BolaImpulso, BolaCatapulta, SistemaBowling } from './Mechanics'; // Importar todas las mecánicas
 import { Results } from './Results'; // Importar el componente QuizFinal
 import './Quiz.css'; // Importar el archivo CSS
+import useUserStore from "../../stores/use-user-store"; // ajusta el path si es diferente
+import useAuthStore from "../../stores/use-auth-store"; // para acceder al UID
+import { useEffect } from "react";
 
 // Botón flotante para reiniciar solo la posición de la bola
 function InfoButton({ onClick }) {
@@ -66,6 +69,23 @@ export default function QuizPrincipal() {
   const [mostrarResultado, setMostrarResultado] = useState(false); // Controla la visibilidad del mensaje de resultado
   const [respuestaSeleccionada, setRespuestaSeleccionada] = useState(""); // La opción seleccionada por el usuario
 
+  //Nuevo
+
+  //Saber si el usuario ya esta
+  const { userLooged } = useAuthStore();
+  const { initUser, updateQuizProgress, fetchUsers } = useUserStore();
+  useEffect(() => {
+    const cargarUsuario = async () => {
+      if (userLooged?.uid) {
+        const userData = await initUser(userLooged);
+        setIndice(userData.currentQuestion || 0);
+        setPuntaje(userData.score || 0);
+      }
+    };
+    cargarUsuario();
+  }, [userLooged]);
+
+
   // Obtener la pregunta actual del array de preguntas
   const pregunta = preguntas[indice];
 
@@ -75,7 +95,7 @@ export default function QuizPrincipal() {
    *
    * @param {string} respuesta - La etiqueta de la opción seleccionada por el usuario.
    */
-  const avanzar = useCallback((respuesta) => {
+  const avanzar = useCallback(async (respuesta) => {
     if (respondidaRef.current) return;
     respondidaRef.current = true;
     setRespondida(true);
@@ -85,6 +105,10 @@ export default function QuizPrincipal() {
     if (respuesta === pregunta.correcta) {
       setPuntaje(puntajeActual => puntajeActual + 1);
     }
+
+     if (userLooged?.uid) {
+      await updateQuizProgress(userLooged.uid, indice + 1, puntaje);
+  }
 
     setTimeout(() => {
       respondidaRef.current = false;

@@ -1,5 +1,6 @@
 import React from "react";
 import './Quiz.css'; // Importar el archivo CSS
+import MedalleroCanvas from "./Medal-table";
 
 /**
  * Componente para la pantalla final del quiz, mostrando el puntaje y un mensaje.
@@ -26,6 +27,12 @@ export function Results({ puntaje, totalPreguntas, onReiniciar }) {
       <p className="final-score">
         Puntaje final: <strong>{puntaje} / {totalPreguntas}</strong> ({porcentaje}%)
       </p>
+
+      {/* 🎖 Medallero 3D */}
+  <div style={{ margin: "2rem 0" }}>
+    <MedalleroCanvas />
+  </div>
+  
       <button
         onClick={onReiniciar}
         className="restart-button" // Usa la clase CSS
