@@ -105,7 +105,7 @@ export default function PreventionTab() {
                   bevelSegments={5}
                   color="#1a237e"
                 >
-                  Haz click sobre el modelo para ver consejos
+                 Visita a tu oftalmólogo regularmente
                   <meshStandardMaterial color="rgb(16, 22, 153)" />
                 </Text3D>
               </Suspense>
