@@ -27,9 +27,14 @@ const preguntas = [
     instruccion: "Arrastra la bola azul hacia la opción correcta"
   },
   {
-    texto: "¿Cuál puede ser un síntoma del glaucoma?",
-    opciones: ["Pérdida de visión periférica", "Picazón", "Ojos secos", "Lagrimeo excesivo"],
-    correcta: "Pérdida de visión periférica",
+    texto: "¿Cuál es un síntoma común de la miopía?",
+    opciones: [
+      "Dificultad para ver de lejos",
+      "Ojo rojo",
+      "Dolor de cabeza intenso",
+      "Visión doble"
+    ],
+    correcta: "Dificultad para ver de lejos",
     mecanica: "impulso",
     color: "#10b981",
     instruccion: "Haz clic en cualquier lugar para empujar la bola verde hacia adelante"
