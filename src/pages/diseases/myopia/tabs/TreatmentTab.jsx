@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unknown-property */
 import { Suspense, useState } from 'react';
 import { Canvas } from '@react-three/fiber';
-import { OrbitControls, Text, ContactShadows } from '@react-three/drei';
+import { OrbitControls, Text, ContactShadows, Text3D } from '@react-three/drei';
 import { Row, Col } from 'react-bootstrap';
 import TreatmentModel from '../model-3d/TreatmentModel.jsx';
 import TreatmentModelLights from '../Lights/TreatmentModelLights.jsx';
@@ -40,6 +40,22 @@ export default function TreatmentTab() {
                   <circleGeometry args={[3.5, 32]} />
                   <meshStandardMaterial roughness={0.7} metalness={0.8} color="#e0e0e0" />
                 </mesh>
+                {/* Texto 3D de instrucción */}
+                <Text3D
+                  position={[-1, 0.8, 0]}
+                  font="/fonts/Montserrat-SemiBold.json"
+                  size={0.18}
+                  height={0.04}
+                  curveSegments={12}
+                  bevelEnabled
+                  bevelThickness={0.01}
+                  bevelSize={0.008}
+                  bevelOffset={0}
+                  bevelSegments={5}
+                  >
+                  visión borrosa
+                  <meshStandardMaterial color="rgb(16, 22, 153)" />
+                </Text3D>
                 {/* Eliminado el texto 3D */}
                 <OrbitControls enableZoom={false} enableRotate={true} enablePan={false} maxPolarAngle={Math.PI / 2} minPolarAngle={Math.PI / 2} />
               </Suspense>

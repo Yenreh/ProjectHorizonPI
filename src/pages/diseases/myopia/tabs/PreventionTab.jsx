@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unknown-property */
 import { Suspense, useState } from 'react';
 import { Canvas } from '@react-three/fiber';
-import { OrbitControls, Html } from '@react-three/drei';
+import { OrbitControls, Html, Text3D } from '@react-three/drei';
 import { Row, Col } from 'react-bootstrap';
 import PreventionModel from '../model-3d/PreventionModel.jsx';
 import PreventionStaging from '../Staging/PreventionStaging.jsx';
@@ -91,8 +91,25 @@ export default function PreventionTab() {
                   <circleGeometry args={[3.5, 32]} />
                   <meshStandardMaterial roughness={0.8} metalness={1} color="#e0e0e0" />
                 </mesh>
+                {/* Texto 3D de instrucción */}
+                <Text3D
+                  position={[0.2, 1.1, 1.05]}
+                  font="/fonts/Montserrat-SemiBold.json"
+                  size={0.04}
+                  height={0.04}
+                  curveSegments={12}
+                  bevelEnabled
+                  bevelThickness={0.01}
+                  bevelSize={0.008}
+                  bevelOffset={0}
+                  bevelSegments={5}
+                  color="#1a237e"
+                >
+                  Haz click sobre el modelo para ver consejos
+                  <meshStandardMaterial color="rgb(16, 22, 153)" />
+                </Text3D>
               </Suspense>
-              <OrbitControls enableZoom={false} />
+              <OrbitControls enableZoom={false} enableRotate={false} />
             </Canvas>
           </div>
         </Col>
