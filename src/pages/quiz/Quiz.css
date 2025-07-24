@@ -5,7 +5,7 @@
   right: 2.2rem;
   z-index: 20;
   background: #10b981;
-  color: white;
+  color: rgb(192, 62, 62);
   border: none;
   border-radius: 50%;
   width: 60px;
@@ -96,6 +96,7 @@
   font-weight: 700;
   color: white;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  text-align: center;
 }
 
 .quiz-stats {
@@ -167,7 +168,7 @@
 /* Estilos de la pantalla final */
 .final-screen {
   text-align: center;
-  padding: 2rem;
+  padding: 3rem;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   min-height: 100vh;
   color: white;
@@ -219,6 +220,10 @@
 .restart-button:active {
   transform: scale(0.98);
   background-color: #0a8a5e;
+}
+
+.restart-button .icon {
+  margin-right: 8px; /* espacio entre icono y texto */
 }
 
 /* Media Queries para responsividad */

@@ -9,6 +9,8 @@ import './Quiz.css'; // Importar el archivo CSS
 import useUserStore from "../../stores/use-user-store"; // ajusta el path si es diferente
 import useAuthStore from "../../stores/use-auth-store"; // para acceder al UID
 import { useEffect } from "react";
+import { useNavigate } from "react-router";
+import { CheckCircle, XCircle } from 'lucide-react';
 
 // Botón flotante para reiniciar solo la posición de la bola
 function InfoButton({ onClick }) {
@@ -66,6 +68,7 @@ const preguntas = [
  * y la renderización de las mecánicas 3D.
  */
 export default function QuizPrincipal() {
+
   // Ref para bloquear múltiples respuestas por pregunta
   const respondidaRef = React.useRef(false);
   const [indice, setIndice] = useState(0); // Índice de la pregunta actual
@@ -79,15 +82,24 @@ export default function QuizPrincipal() {
   //Saber si el usuario ya esta
   const { userLooged } = useAuthStore();
   const { initUser, updateQuizProgress, fetchUsers } = useUserStore();
+  const navigate = useNavigate();
+
   useEffect(() => {
     const cargarUsuario = async () => {
       if (userLooged?.uid) {
         const userData = await initUser(userLooged);
         setIndice(userData.currentQuestion || 0);
         setPuntaje(userData.score || 0);
-      }
+      } 
     };
     cargarUsuario();
+  }, [userLooged]);
+
+  useEffect(() => {
+    if (!userLooged) {
+      alert("Debes iniciar sesión para acceder al quiz");
+      navigate("/"); // o "/" si quieres mandarlo a inicio
+    }
   }, [userLooged]);
 
 
@@ -109,11 +121,10 @@ export default function QuizPrincipal() {
 
     if (respuesta === pregunta.correcta) {
       setPuntaje(puntajeActual => puntajeActual + 1);
-    }
-
-     if (userLooged?.uid) {
+      await updateQuizProgress(userLooged.uid, indice + 1, puntaje + 1);
+    } else {
       await updateQuizProgress(userLooged.uid, indice + 1, puntaje);
-  }
+    }
 
     setTimeout(() => {
       respondidaRef.current = false;
@@ -131,12 +142,13 @@ export default function QuizPrincipal() {
   /**
    * Función para reiniciar el quiz desde el principio.
    */
-  const reiniciar = useCallback(() => {
+  const reiniciar = useCallback(async () => {
     setIndice(0);
     setPuntaje(0);
     setRespondida(false);
     setMostrarResultado(false);
     setRespuestaSeleccionada("");
+    await updateQuizProgress(userLooged.uid, 0, 0);
   }, []);
 
   // Estado y función para reiniciar la posición de la bola actual
@@ -192,7 +204,7 @@ export default function QuizPrincipal() {
       {mostrarResultado && (
         <div className={`quiz-result-center ${respuestaSeleccionada === pregunta.correcta ? "correct" : "incorrect"}`}>
           <h3 className="quiz-result-title">
-            {respuestaSeleccionada === pregunta.correcta ? "¡CORRECTO! ✅" : "INCORRECTO ❌"}
+            {respuestaSeleccionada === pregunta.correcta ? <span>{"¡CORRECTO! "} <CheckCircle size={35} /></span> : <span>{"¡CORRECTO! "} <XCircle size={35}/></span> }
           </h3>
           <p className="quiz-result-text">
             Respuesta correcta: <strong>{pregunta.correcta}</strong>
@@ -204,7 +216,7 @@ export default function QuizPrincipal() {
       <Canvas
         key={`pregunta-${indice}`}
         shadows
-        camera={{ position: [0, 8, 12], fov: 60 }}
+        camera={{ position: [0, 8, 12], fov: 50 }}
         style={{ height: "100%" }}
       >
         <Environment3D />
