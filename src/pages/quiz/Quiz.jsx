@@ -9,6 +9,7 @@ import './Quiz.css'; // Importar el archivo CSS
 import useUserStore from "../../stores/use-user-store"; // ajusta el path si es diferente
 import useAuthStore from "../../stores/use-auth-store"; // para acceder al UID
 import { useEffect } from "react";
+import { useNavigate } from "react-router";
 
 // Botón flotante para reiniciar solo la posición de la bola
 function InfoButton({ onClick }) {
@@ -66,6 +67,7 @@ const preguntas = [
  * y la renderización de las mecánicas 3D.
  */
 export default function QuizPrincipal() {
+
   // Ref para bloquear múltiples respuestas por pregunta
   const respondidaRef = React.useRef(false);
   const [indice, setIndice] = useState(0); // Índice de la pregunta actual
@@ -79,12 +81,16 @@ export default function QuizPrincipal() {
   //Saber si el usuario ya esta
   const { userLooged } = useAuthStore();
   const { initUser, updateQuizProgress, fetchUsers } = useUserStore();
+  const navigate = useNavigate();
   useEffect(() => {
     const cargarUsuario = async () => {
       if (userLooged?.uid) {
         const userData = await initUser(userLooged);
         setIndice(userData.currentQuestion || 0);
         setPuntaje(userData.score || 0);
+      } else {
+        alert("Debes iniciar sesión para acceder al quiz");
+        navigate("/");
       }
     };
     cargarUsuario();

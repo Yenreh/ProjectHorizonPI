@@ -167,8 +167,8 @@ const Home = () => {
                                     <Card.Text className="flex-grow-1">
                                         Prueba tus conocimientos aprendidos mediante nuestro quiz interactivo
                                     </Card.Text>
-                                    <Button variant="secondary" className="mt-3 rounded-pill w-100" disabled>
-                                        Proximamente
+                                    <Button className="mt-3 rounded-pill w-100 bg-blue-500 text-white" onClick={() => navigate("/quiz")}>
+                                        Ir al Quiz
                                     </Button>
                                 </Card.Body>
                             </Card>
