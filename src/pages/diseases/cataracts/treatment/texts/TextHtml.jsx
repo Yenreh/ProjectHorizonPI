@@ -30,7 +30,7 @@ const TextHtml = ({ scaleX, posX, posY, posZ }) => {
             👁️ Presiona: <br />
             a - Vista sin tratamiento  <br />
             t - Efecto del tratamiento <br />
-            v / clic - Volver
+            v / doble clic - Volver
           </div>
         )}
       </div>

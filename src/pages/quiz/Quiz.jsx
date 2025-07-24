@@ -109,11 +109,10 @@ export default function QuizPrincipal() {
 
     if (respuesta === pregunta.correcta) {
       setPuntaje(puntajeActual => puntajeActual + 1);
-    }
-
-     if (userLooged?.uid) {
+      await updateQuizProgress(userLooged.uid, indice + 1, puntaje + 1);
+    } else {
       await updateQuizProgress(userLooged.uid, indice + 1, puntaje);
-  }
+    }
 
     setTimeout(() => {
       respondidaRef.current = false;
@@ -131,12 +130,13 @@ export default function QuizPrincipal() {
   /**
    * Función para reiniciar el quiz desde el principio.
    */
-  const reiniciar = useCallback(() => {
+  const reiniciar = useCallback(async () => {
     setIndice(0);
     setPuntaje(0);
     setRespondida(false);
     setMostrarResultado(false);
     setRespuestaSeleccionada("");
+    await updateQuizProgress(userLooged.uid, 0, 0);
   }, []);
 
   // Estado y función para reiniciar la posición de la bola actual
@@ -204,7 +204,7 @@ export default function QuizPrincipal() {
       <Canvas
         key={`pregunta-${indice}`}
         shadows
-        camera={{ position: [0, 8, 12], fov: 60 }}
+        camera={{ position: [0, 8, 12], fov: 50 }}
         style={{ height: "100%" }}
       >
         <Environment3D />
