@@ -82,18 +82,23 @@ export default function QuizPrincipal() {
   const { userLooged } = useAuthStore();
   const { initUser, updateQuizProgress, fetchUsers } = useUserStore();
   const navigate = useNavigate();
+
   useEffect(() => {
     const cargarUsuario = async () => {
       if (userLooged?.uid) {
         const userData = await initUser(userLooged);
         setIndice(userData.currentQuestion || 0);
         setPuntaje(userData.score || 0);
-      } else {
-        alert("Debes iniciar sesión para acceder al quiz");
-        navigate("/");
-      }
+      } 
     };
     cargarUsuario();
+  }, [userLooged]);
+
+  useEffect(() => {
+    if (!userLooged) {
+      alert("Debes iniciar sesión para acceder al quiz");
+      navigate("/"); // o "/" si quieres mandarlo a inicio
+    }
   }, [userLooged]);
 
 
