@@ -10,6 +10,7 @@ import useUserStore from "../../stores/use-user-store"; // ajusta el path si es 
 import useAuthStore from "../../stores/use-auth-store"; // para acceder al UID
 import { useEffect } from "react";
 import { useNavigate } from "react-router";
+import { CheckCircle, XCircle } from 'lucide-react';
 
 // Botón flotante para reiniciar solo la posición de la bola
 function InfoButton({ onClick }) {
@@ -203,7 +204,7 @@ export default function QuizPrincipal() {
       {mostrarResultado && (
         <div className={`quiz-result-center ${respuestaSeleccionada === pregunta.correcta ? "correct" : "incorrect"}`}>
           <h3 className="quiz-result-title">
-            {respuestaSeleccionada === pregunta.correcta ? "¡CORRECTO! ✅" : "INCORRECTO ❌"}
+            {respuestaSeleccionada === pregunta.correcta ? <span>{"¡CORRECTO! "} <CheckCircle size={35} /></span> : <span>{"¡CORRECTO! "} <XCircle size={35}/></span> }
           </h3>
           <p className="quiz-result-text">
             Respuesta correcta: <strong>{pregunta.correcta}</strong>
