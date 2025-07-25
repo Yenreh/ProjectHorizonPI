@@ -3,7 +3,7 @@ import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Text } from "@react-three/drei";
 import useUserStore from "../../stores/use-user-store";
 
-function CeldaTabla3D({ texto, position, ancho=4, largo = 1, color }) {
+function CeldaTabla3D({ texto, position, ancho=4, largo = 1, color, colorText }) {
   return (
     <group position={position}>
       <mesh>
@@ -13,7 +13,7 @@ function CeldaTabla3D({ texto, position, ancho=4, largo = 1, color }) {
       <Text
         position={[0, 0, 0.2]}
         fontSize={0.3}
-        color="black"
+        color={colorText}
         anchorX="center"
         anchorY="middle"
         font="fonts/Montserrat-Bold.ttf"
@@ -43,7 +43,7 @@ function MedalleroCanvas() {
 >
   {/* <color attach="background" args={["#e0f7ff"]} /> */}
   <ambientLight intensity={0.5} />
-  <directionalLight position={[5, 10, 5]} intensity={1} castShadow />
+  <directionalLight position={[5, 10, 5]} intensity={2} castShadow />
 
   <OrbitControls enablePan={false} maxPolarAngle={Math.PI / 2.1} minPolarAngle={Math.PI / 3} />
 
@@ -53,7 +53,8 @@ function MedalleroCanvas() {
       key={`header-${colIndex}`}
       texto={titulo}
       position={[colIndex * 4.2 - 4, 0 + 3, 0]}
-      color="#a1c4fd"
+      color="#020873"
+      colorText="white"
     />
   ))}
 
@@ -70,7 +71,8 @@ function MedalleroCanvas() {
         key={`celda-${filaIndex}-${colIndex}`}
         texto={texto}
         position={[colIndex * 4.2 - 4, -(filaIndex + 1) * 1.2 + 3, 0]}
-        color={filaIndex % 2 === 0 ? "#f0f0f0" : "#f0f0f0"}
+        color={filaIndex % 2 === 0 ? "#D1D3FF" : "#9EA3FF"}
+        colorText="black"
       />
     ));
   })}

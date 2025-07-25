@@ -169,7 +169,7 @@
 .final-screen {
   text-align: center;
   padding: 3rem;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #9EA3FF  0%,  #D1D3FF 100%);
   min-height: 100vh;
   color: white;
   display: flex;
@@ -183,6 +183,7 @@
   font-size: 3.5rem;
   margin: 0 0 1rem 0;
   text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.4);
+  font-family: 'Montserrat', sans-serif;
 }
 
 .final-message {
