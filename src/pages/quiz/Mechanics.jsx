@@ -103,7 +103,7 @@ export function BolaArrastrable({ respondida, color, preguntaIndex, resetBolaFla
         onPointerOut={() => !isDragging && (gl.domElement.style.cursor = 'auto')}
         castShadow
       >
-        <sphereGeometry args={[0.6]} />
+        <sphereGeometry args={[0.8]} />
         <meshStandardMaterial
           color={isDragging ? "#fbbf24" : color}
           emissive={isDragging ? "#f59e0b" : "#000000"}
@@ -175,7 +175,7 @@ export function BolaImpulso({ respondida, color, preguntaIndex, resetBolaFlag })
       userData={{ isProjectile: true }}
     >
       <mesh castShadow>
-        <sphereGeometry args={[0.6]} />
+        <sphereGeometry args={[0.8]} />
         <meshStandardMaterial
           color={color}
           emissive={color}
@@ -276,7 +276,7 @@ export function BolaCatapulta({ respondida, color, preguntaIndex, resetBolaFlag 
         userData={{ isProjectile: true }}
       >
         <mesh castShadow>
-          <sphereGeometry args={[0.6]} />
+          <sphereGeometry args={[0.8]} />
           <meshStandardMaterial
             color={isCharging ? "#fbbf24" : color}
             emissive={isCharging ? "#f59e0b" : color}

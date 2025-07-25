@@ -10,13 +10,13 @@ import useUserStore from "../../stores/use-user-store"; // ajusta el path si es 
 import useAuthStore from "../../stores/use-auth-store"; // para acceder al UID
 import { useEffect } from "react";
 import { useNavigate } from "react-router";
-import { CheckCircle, XCircle } from 'lucide-react';
+import { CheckCircle, XCircle, RotateCw } from 'lucide-react';
 
 // Botón flotante para reiniciar solo la posición de la bola
 function InfoButton({ onClick }) {
   return (
     <button className="quiz-reset-btn" title="Reiniciar posición de la bola" onClick={onClick}>
-      <span role="img" aria-label="reset">🔄</span>
+      <span role="img" aria-label="reset"><RotateCw size={25} strokeWidth={3.2} /></span>
     </button>
   );
 }
@@ -204,7 +204,7 @@ export default function QuizPrincipal() {
       {mostrarResultado && (
         <div className={`quiz-result-center ${respuestaSeleccionada === pregunta.correcta ? "correct" : "incorrect"}`}>
           <h3 className="quiz-result-title">
-            {respuestaSeleccionada === pregunta.correcta ? <span>{"¡CORRECTO! "} <CheckCircle size={35} /></span> : <span>{"¡CORRECTO! "} <XCircle size={35}/></span> }
+            {respuestaSeleccionada === pregunta.correcta ? <span>{"¡CORRECTO! "} <CheckCircle size={35} /></span> : <span>{"¡INCORRECTO! "} <XCircle size={35}/></span> }
           </h3>
           <p className="quiz-result-text">
             Respuesta correcta: <strong>{pregunta.correcta}</strong>
@@ -217,7 +217,7 @@ export default function QuizPrincipal() {
         key={`pregunta-${indice}`}
         shadows
         camera={{ position: [0, 8, 12], fov: 50 }}
-        style={{ height: "100%" }}
+        style={{ height: "80%" }}
       >
         <Environment3D />
         <Physics gravity={[0, -12, 0]} debug={false}>
@@ -228,7 +228,7 @@ export default function QuizPrincipal() {
             <Option
               key={`${indice}-${opcion}-${i}`}
               label={opcion}
-              position={[i * 4 - 6, 2, -4]}
+              position={[i * 5.1 - 7.3, 2, -4]}
               isCorrect={opcion === pregunta.correcta}
               showResult={mostrarResultado && respuestaSeleccionada === opcion}
               onHit={avanzar}

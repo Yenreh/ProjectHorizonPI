@@ -43,7 +43,7 @@ export function Option({ label, position, isCorrect, showResult, onHit, pregunta
       ref={ref}
       key={`opcion-${preguntaIndex}-${label}`}
       type="dynamic"
-      mass={1}
+      mass={0.8}
       colliders="cuboid"
       position={position}
       userData={{ label, isCorrect }}
@@ -52,16 +52,17 @@ export function Option({ label, position, isCorrect, showResult, onHit, pregunta
       friction={0.7}
     >
       <mesh castShadow receiveShadow>
-        <boxGeometry args={[2.5, 1.5, 0.8]} />
+        <boxGeometry args={[3.8, 2.0, 0.8]} />
         <meshStandardMaterial color={color} metalness={0.1} roughness={0.7} />
       </mesh>
       <Text
-        position={[0, 0, 0.5]}
-        fontSize={0.22}
+        position={[0, 0.12, 0.5]}
+        fontSize={0.4}
         color={textColor}
         anchorX="center"
         anchorY="middle"
         maxWidth={2.2}
+        font="fonts/Montserrat-ExtraBold.ttf"
       >
         {label}
       </Text>
