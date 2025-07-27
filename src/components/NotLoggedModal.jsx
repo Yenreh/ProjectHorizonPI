@@ -18,7 +18,7 @@ const NotLoggedModal = ({ isOpen, onClose }) => {
         <button className="button-onclose" onClick={handleClose} aria-label="Cerrar">&times;</button>
         <div className="content-login-elements">
           <img src="/favicon.png" alt="Logo" className="logo-login" />
-          <h2 className="title-login">¡No estás logeado!</h2>
+          <h2 className="title-login">¡No has iniciado sesión!</h2>
           <p className="caption-login">Debes iniciar sesión para poder realizar el quiz.</p>
         </div>
       </div>
