@@ -93,7 +93,7 @@ export default function PreventionTab() {
                 </mesh>
                 {/* Texto 3D de instrucción */}
                 <Text3D
-                  position={[0.2, 1.1, 1.05]}
+                  position={[-0.5, 1.1, 1.05]}
                   font="/fonts/Montserrat-SemiBold.json"
                   size={0.04}
                   height={0.04}

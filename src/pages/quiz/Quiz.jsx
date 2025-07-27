@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import { Canvas } from "@react-three/fiber";
 import { Physics } from "@react-three/rapier";
 import { Option } from './Option'; // Importar el componente Opcion
@@ -8,7 +8,6 @@ import { Results } from './Results'; // Importar el componente QuizFinal
 import './Quiz.css'; // Importar el archivo CSS
 import useUserStore from "../../stores/use-user-store"; // ajusta el path si es diferente
 import useAuthStore from "../../stores/use-auth-store"; // para acceder al UID
-import { useEffect } from "react";
 import { useNavigate } from "react-router";
 import { CheckCircle, XCircle, RotateCw } from 'lucide-react';
 
@@ -93,13 +92,6 @@ export default function QuizPrincipal() {
       } 
     };
     cargarUsuario();
-  }, [userLooged]);
-
-  useEffect(() => {
-    if (!userLooged) {
-      alert("Debes iniciar sesión para acceder al quiz");
-      navigate("/"); // o "/" si quieres mandarlo a inicio
-    }
   }, [userLooged]);
 
 

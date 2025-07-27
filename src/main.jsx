@@ -1,6 +1,7 @@
 import { createRoot } from "react-dom/client";
 import { BrowserRouter, Routes, Route, Outlet } from "react-router";
 import { Suspense, lazy } from "react";
+import ProtectedRoute from "./routes/ProtectedRoute";
 import Layout from "./layout/Layout";
 import "bootstrap/dist/css/bootstrap.min.css";
 import 'bootstrap-icons/font/bootstrap-icons.css';
@@ -27,7 +28,11 @@ createRoot(document.getElementById("root")).render(
             <Route path="/miopia" element={<Myopia />} />
             <Route path="/desprendimiento_retina" element={<RetinaDetachment />} />
             <Route path="/conjuntivitis" element={<Conjunctivitis />} />
-            <Route path="/quiz" element={<Quiz />} />
+            <Route path="/quiz" element={
+              <ProtectedRoute>
+                <Quiz />
+              </ProtectedRoute>
+            } />
         </Route>
 
         {/* Rutas sin Layout (pantalla completa) */}
