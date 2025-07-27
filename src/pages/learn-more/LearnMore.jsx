@@ -90,76 +90,117 @@ const LearnMore = () => {
           </Row>
 
           {/* Infografía visual */}
-          <div className="lm-infografia mb-5">
-            <h2 className="lm-section-title text-center mb-4">¿Sabías que...?</h2>
-            <Row className="g-4 justify-content-center">
-              <Col lg={3} md={6} sm={6}>
-                <Card className="text-center h-100 shadow-sm border-0 lm-stat-card">
-                  <Card.Body className="d-flex flex-column align-items-center">
-                    <img src="/images/eye-general.webp" alt="Ojo general" className="lm-stat-icon mb-3" />
-                    <Card.Text className="lm-stat-text">
-                      El 80% de los casos de discapacidad visual se pueden prevenir o tratar.
-                    </Card.Text>
-                  </Card.Body>
-                </Card>
-              </Col>
-              <Col lg={3} md={6} sm={6}>
-                <Card className="text-center h-100 shadow-sm border-0 lm-stat-card">
-                  <Card.Body className="d-flex flex-column align-items-center">
-                    <img src="/images/eye-cataracts.webp" alt="Cataratas" className="lm-stat-icon mb-3" />
-                    <Card.Text className="lm-stat-text">
-                      Las cataratas son la principal causa de ceguera en el mundo.
-                    </Card.Text>
-                  </Card.Body>
-                </Card>
-              </Col>
-              <Col lg={3} md={6} sm={6}>
-                <Card className="text-center h-100 shadow-sm border-0 lm-stat-card">
-                  <Card.Body className="d-flex flex-column align-items-center">
-                    <img src="/images/eye-myopia.webp" alt="Miopía" className="lm-stat-icon mb-3" />
-                    <Card.Text className="lm-stat-text">
-                      La miopía está aumentando rápidamente en la población joven.
-                    </Card.Text>
-                  </Card.Body>
-                </Card>
-              </Col>
-              <Col lg={3} md={6} sm={6}>
-                <Card className="text-center h-100 shadow-sm border-0 lm-stat-card">
-                  <Card.Body className="d-flex flex-column align-items-center">
-                    <img src="/images/eye-conjunctivitis.webp" alt="Conjuntivitis" className="lm-stat-icon mb-3" />
-                    <Card.Text className="lm-stat-text">
-                      La conjuntivitis es una de las infecciones oculares más comunes.
-                    </Card.Text>
-                  </Card.Body>
-                </Card>
-              </Col>
-            </Row>
-          </div>
-
-          {/* FAQ Section */}
-          <Card className="lm-faq-card shadow border-0">
-            <Card.Body>
-              <h2 className="lm-section-title text-center mb-4">Preguntas frecuentes</h2>
-              <Row>
-                <Col>
-                  <div className="lm-faq-list">
-                    <div className="lm-faq-item mb-4">
-                      <h5 className="lm-faq-question">¿Cada cuánto debo hacerme un examen visual?</h5>
-                      <p className="lm-faq-answer">Se recomienda al menos una vez al año, especialmente si usas lentes o tienes antecedentes familiares.</p>
+          <section className="py-5">
+            <Container>
+              <h2 className="lm-section-title text-center mb-5">¿Sabías que...?</h2>
+              <Row className="g-4 justify-content-center">
+                <Col lg={3} md={6} sm={6}>
+                  <div className="lm-stat-card text-center h-100">
+                    <div className="lm-stat-card-inner">
+                      <div className="lm-stat-icon-wrapper">
+                        <img src="/images/eye-general.webp" alt="Ojo general" className="lm-stat-icon" />
+                      </div>
+                      <div className="lm-stat-content">
+                        <p className="lm-stat-description">
+                          El 80% de los casos de discapacidad visual se pueden prevenir o tratar
+                        </p>
+                      </div>
                     </div>
-                    <div className="lm-faq-item mb-4">
-                      <h5 className="lm-faq-question">¿El uso de pantallas daña la vista?</h5>
-                      <p className="lm-faq-answer">No causa daño permanente, pero puede provocar fatiga visual y sequedad ocular.</p>
+                  </div>
+                </Col>
+                <Col lg={3} md={6} sm={6}>
+                  <div className="lm-stat-card text-center h-100">
+                    <div className="lm-stat-card-inner">
+                      <div className="lm-stat-icon-wrapper">
+                        <img src="/images/eye-cataracts.webp" alt="Cataratas" className="lm-stat-icon" />
+                      </div>
+                      <div className="lm-stat-content">
+                        <p className="lm-stat-description">
+                          Las cataratas son la principal causa de ceguera mundial
+                        </p>
+                      </div>
                     </div>
-                    <div className="lm-faq-item">
-                      <h5 className="lm-faq-question">¿Qué síntomas requieren atención urgente?</h5>
-                      <p className="lm-faq-answer">Pérdida súbita de visión, dolor intenso, destellos o manchas negras repentinas.</p>
+                  </div>
+                </Col>
+                <Col lg={3} md={6} sm={6}>
+                  <div className="lm-stat-card text-center h-100">
+                    <div className="lm-stat-card-inner">
+                      <div className="lm-stat-icon-wrapper">
+                        <img src="/images/eye-myopia.webp" alt="Miopía" className="lm-stat-icon" />
+                      </div>
+                      <div className="lm-stat-content">
+                        <p className="lm-stat-description">
+                          La miopía está aumentando rápidamente en jóvenes
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </Col>
+                <Col lg={3} md={6} sm={6}>
+                  <div className="lm-stat-card text-center h-100">
+                    <div className="lm-stat-card-inner">
+                      <div className="lm-stat-icon-wrapper">
+                        <img src="/images/eye-conjunctivitis.webp" alt="Conjuntivitis" className="lm-stat-icon" />
+                      </div>
+                      <div className="lm-stat-content">
+                        <p className="lm-stat-description">
+                          La conjuntivitis es una infección ocular muy común
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </Col>
               </Row>
-            </Card.Body>
-          </Card>
+            </Container>
+          </section>
+
+          {/* FAQ Section */}
+          <section className="py-5 bg-white">
+            <Container>
+              <h2 className="lm-section-title text-center mb-5">Preguntas frecuentes</h2>
+              <Row className="justify-content-center">
+                <Col lg={8}>
+                  <div className="lm-faq-container">
+                    <div className="lm-faq-item">
+                      <div className="lm-faq-question-wrapper">
+                        <div className="lm-faq-icon">
+                          <i className="fas fa-calendar-check"></i>
+                        </div>
+                        <div className="lm-faq-content">
+                          <h5 className="lm-faq-question">¿Cada cuánto debo hacerme un examen visual?</h5>
+                          <p className="lm-faq-answer">Se recomienda al menos una vez al año, especialmente si usas lentes o tienes antecedentes familiares de problemas oculares.</p>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div className="lm-faq-item">
+                      <div className="lm-faq-question-wrapper">
+                        <div className="lm-faq-icon">
+                          <i className="fas fa-mobile-alt"></i>
+                        </div>
+                        <div className="lm-faq-content">
+                          <h5 className="lm-faq-question">¿El uso de pantallas daña la vista?</h5>
+                          <p className="lm-faq-answer">No causa daño permanente, pero puede provocar fatiga visual y sequedad ocular. Es importante tomar descansos regulares.</p>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div className="lm-faq-item">
+                      <div className="lm-faq-question-wrapper">
+                        <div className="lm-faq-icon">
+                          <i className="fas fa-exclamation-triangle"></i>
+                        </div>
+                        <div className="lm-faq-content">
+                          <h5 className="lm-faq-question">¿Qué síntomas requieren atención urgente?</h5>
+                          <p className="lm-faq-answer">Pérdida súbita de visión, dolor intenso, destellos de luz, manchas negras repentinas o cualquier cambio brusco en la visión.</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </Col>
+              </Row>
+            </Container>
+          </section>
         </Container>
       </section>
     </div>
