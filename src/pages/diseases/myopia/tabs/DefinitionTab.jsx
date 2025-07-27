@@ -10,8 +10,7 @@ import ZoomButton from '../Utils/ZoomButton/ZoomButton.jsx';
 import { LuRotate3D } from 'react-icons/lu';
 
 // Component to render a plane with a looping video texture and dynamic scaling
-function VideoPanel({ url, position, initialScale, zoomScale }) {
-  const [isZoomed, setIsZoomed] = useState(false);
+function VideoPanel({ url, position, initialScale, zoomScale, isZoomed }) {
   const texture = useVideoTexture(url, {
     crossOrigin: 'Anonymous',
     loop: true,
@@ -25,7 +24,6 @@ function VideoPanel({ url, position, initialScale, zoomScale }) {
       <mesh
         position={position}
         scale={isZoomed ? zoomScale : initialScale}
-        onClick={() => setIsZoomed(!isZoomed)}
       >
         <planeGeometry args={[1, 0.6]} />
         <meshBasicMaterial toneMapped={false} map={texture} />
@@ -35,6 +33,9 @@ function VideoPanel({ url, position, initialScale, zoomScale }) {
 }
 
 export default function DefinitionTab() {
+  const [isZoomed, setIsZoomed] = useState(false);
+  const handleZoomClick = () => setIsZoomed((z) => !z);
+
   return (
     <section className="desease-content py-4 px-md-3">
       <Row className="align-items-center gy-4">
@@ -45,7 +46,7 @@ export default function DefinitionTab() {
             </div>
             {/* Botones en la esquina superior derecha */}
             <div style={{ position: 'absolute', top: 10, left: 10, zIndex: 2, display: 'flex', gap: 8 }}>
-              <ZoomButton buttonLabel="" iconClass="bi bi-film">
+              <ZoomButton buttonLabel="" iconClass="bi bi-film" onClick={handleZoomClick}>
                 Ampliar el video para verlo mejor. Haz click nuevamente para salir del zoom.
               </ZoomButton>
             </div>
@@ -53,13 +54,14 @@ export default function DefinitionTab() {
               <Suspense fallback={null}>
                 <DefinitionModelLights />
                 <DefinitionStaging />
-                <DefinitionModel position={[0, 0, 0]} scale={100} rotation={[Math.PI, 0, 0]} />
+                <DefinitionModel position={[-1, 0, 0]} scale={100} rotation={[Math.PI, 0, 0]} />
                 {/* Video Panel with click-to-zoom functionality */}
                 <VideoPanel
                   url="/videos/miopia.mp4"
-                  position={[1.2, 0.5, 0]}
-                  initialScale={[1.2, 0.7, 1]}
-                  zoomScale={[2.5, 1.5, 1]}
+                  position={[1, 0.5, 0]}
+                  initialScale={[1.4, 1.4, 1.4]}
+                  zoomScale={[3, 3, 3]}
+                  isZoomed={isZoomed}
                 />
 
                 <mesh receiveShadow rotation={[-Math.PI / 2, 0, 0]} position={[0, -1.4, 0]}>

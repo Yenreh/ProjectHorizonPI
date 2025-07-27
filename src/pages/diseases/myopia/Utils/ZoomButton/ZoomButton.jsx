@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './ZoomButton.css';
 
-const ZoomButton = ({ buttonLabel = 'Zoom', iconClass = 'bi bi-Zoom-circle-fill', children }) => {
+const ZoomButton = ({ buttonLabel = 'Zoom', iconClass = 'bi bi-Zoom-circle-fill', children, onClick }) => {
   const [showZoom, setShowZoom] = useState(false);
 
   return (
@@ -10,6 +10,7 @@ const ZoomButton = ({ buttonLabel = 'Zoom', iconClass = 'bi bi-Zoom-circle-fill'
         className="zoom-button-general"
         onMouseEnter={() => setShowZoom(true)}
         onMouseLeave={() => setShowZoom(false)}
+        onClick={onClick}
       >
         <i className={iconClass}></i>
         {buttonLabel}
