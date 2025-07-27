@@ -38,9 +38,10 @@ function MedalleroCanvas() {
   const podio = usuarios.slice(0, 3);
   const resto = usuarios.slice(3, 13);
 
-  const alturas = [1.7, 2.8, 1.3];
-  const colores = ["#C0C0C0", "#FFD700", "#CD7F32"];
-  const posicionesX = [-3.7, 0, 3.7];
+  // Orden correcto: 1° (oro, centro), 2° (plata, izq), 3° (bronce, der)
+  const alturas = [2.8, 1.7, 1.3]; // [oro, plata, bronce]
+  const colores = ["#FFD700", "#C0C0C0", "#CD7F32"];
+  const posicionesX = [0, -3.7, 3.7]; // [centro, izq, der]
 
   return (
     <div style={{ display: "flex", justifyContent: "center", alignItems: "flex-start", width: "100%" }}>
@@ -54,50 +55,121 @@ function MedalleroCanvas() {
         <OrbitControls enablePan={false} maxPolarAngle={Math.PI / 2.1} minPolarAngle={Math.PI / 3} />
 
         {podio.length > 0 && (
-          <group position={[0, 1.5, 0]}> {/* Elevación leve del podio */}
-            {[1, 0, 2].map((idx, i) =>
-              podio[idx] && (
-                <group key={idx}>
-                  <mesh position={[posicionesX[i], alturas[idx] / 2, 0]} castShadow>
-                    <boxGeometry args={[2.7, alturas[idx], 1.3]} />
-                    <meshStandardMaterial color={colores[idx]} />
-                  </mesh>
-
-                  {/* Puntaje sobre la cara frontal del podio */}
-                  <Text
-                    position={[posicionesX[i], alturas[idx] / 2, 0.7]}
-                    fontSize={0.3}
-                    color="#ffffff"
-                    anchorX="center"
-                    anchorY="middle"
-                    font="fonts/Montserrat-Bold.ttf"
-                  >
-                    {podio[idx].puntaje + " pts"}
-                  </Text>
-
-                  {/* Nombre y posición por encima */}
-                  <Text
-                    position={[posicionesX[i], alturas[idx] + 0.55, 0]}
-                    fontSize={0.3}
-                    color="#222"
-                    anchorX="center"
-                    anchorY="middle"
-                    font="fonts/Montserrat-Bold.ttf"
-                  >
-                    {podio[idx].nombre.split(" ").slice(0, 2).join(" ")}
-                  </Text>
-                  <Text
-                    position={[posicionesX[i], -0.7, 0]}
-                    fontSize={0.28}
-                    color="#444"
-                    anchorX="center"
-                    anchorY="middle"
-                    font="fonts/Montserrat-Bold.ttf"
-                  >
-                    {idx + 1}°
-                  </Text>
-                </group>
-              )
+          <group position={[0, 1.5, 0]}>
+            {/* Orden: centro (oro, 1°), izq (plata, 2°), der (bronce, 3°) */}
+            {podio[0] && (
+              <group key={0}>
+                <mesh position={[posicionesX[0], alturas[0] / 2, 0]} castShadow>
+                  <boxGeometry args={[2.7, alturas[0], 1.3]} />
+                  <meshStandardMaterial color={colores[0]} />
+                </mesh>
+                <Text
+                  position={[posicionesX[0], alturas[0] / 2, 0.7]}
+                  fontSize={0.3}
+                  color="#ffffff"
+                  anchorX="center"
+                  anchorY="middle"
+                  font="fonts/Montserrat-Bold.ttf"
+                >
+                  {podio[0].puntaje + " pts"}
+                </Text>
+                <Text
+                  position={[posicionesX[0], alturas[0] + 0.55, 0]}
+                  fontSize={0.3}
+                  color="#222"
+                  anchorX="center"
+                  anchorY="middle"
+                  font="fonts/Montserrat-Bold.ttf"
+                >
+                  {podio[0].nombre.split(" ").slice(0, 2).join(" ")}
+                </Text>
+                <Text
+                  position={[posicionesX[0], -0.7, 0]}
+                  fontSize={0.28}
+                  color="#444"
+                  anchorX="center"
+                  anchorY="middle"
+                  font="fonts/Montserrat-Bold.ttf"
+                >
+                  1°
+                </Text>
+              </group>
+            )}
+            {podio[1] && (
+              <group key={1}>
+                <mesh position={[posicionesX[1], alturas[1] / 2, 0]} castShadow>
+                  <boxGeometry args={[2.7, alturas[1], 1.3]} />
+                  <meshStandardMaterial color={colores[1]} />
+                </mesh>
+                <Text
+                  position={[posicionesX[1], alturas[1] / 2, 0.7]}
+                  fontSize={0.3}
+                  color="#ffffff"
+                  anchorX="center"
+                  anchorY="middle"
+                  font="fonts/Montserrat-Bold.ttf"
+                >
+                  {podio[1].puntaje + " pts"}
+                </Text>
+                <Text
+                  position={[posicionesX[1], alturas[1] + 0.55, 0]}
+                  fontSize={0.3}
+                  color="#222"
+                  anchorX="center"
+                  anchorY="middle"
+                  font="fonts/Montserrat-Bold.ttf"
+                >
+                  {podio[1].nombre.split(" ").slice(0, 2).join(" ")}
+                </Text>
+                <Text
+                  position={[posicionesX[1], -0.7, 0]}
+                  fontSize={0.28}
+                  color="#444"
+                  anchorX="center"
+                  anchorY="middle"
+                  font="fonts/Montserrat-Bold.ttf"
+                >
+                  2°
+                </Text>
+              </group>
+            )}
+            {podio[2] && (
+              <group key={2}>
+                <mesh position={[posicionesX[2], alturas[2] / 2, 0]} castShadow>
+                  <boxGeometry args={[2.7, alturas[2], 1.3]} />
+                  <meshStandardMaterial color={colores[2]} />
+                </mesh>
+                <Text
+                  position={[posicionesX[2], alturas[2] / 2, 0.7]}
+                  fontSize={0.3}
+                  color="#ffffff"
+                  anchorX="center"
+                  anchorY="middle"
+                  font="fonts/Montserrat-Bold.ttf"
+                >
+                  {podio[2].puntaje + " pts"}
+                </Text>
+                <Text
+                  position={[posicionesX[2], alturas[2] + 0.55, 0]}
+                  fontSize={0.3}
+                  color="#222"
+                  anchorX="center"
+                  anchorY="middle"
+                  font="fonts/Montserrat-Bold.ttf"
+                >
+                  {podio[2].nombre.split(" ").slice(0, 2).join(" ")}
+                </Text>
+                <Text
+                  position={[posicionesX[2], -0.7, 0]}
+                  fontSize={0.28}
+                  color="#444"
+                  anchorX="center"
+                  anchorY="middle"
+                  font="fonts/Montserrat-Bold.ttf"
+                >
+                  3°
+                </Text>
+              </group>
             )}
           </group>
         )}
