@@ -3,7 +3,7 @@ import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Text } from "@react-three/drei";
 import useUserStore from "../../stores/use-user-store";
 
-function CeldaTabla3D({ texto, position, ancho=4, largo = 1, color, colorText }) {
+function CeldaTabla3D({ texto, position, ancho = 4, largo = 1, color, colorText }) {
   return (
     <group position={position}>
       <mesh>
@@ -35,49 +35,142 @@ function MedalleroCanvas() {
     })();
   }, []);
 
+  const podio = usuarios.slice(0, 3);
+  const resto = usuarios.slice(3, 13);
+
+  const alturas = [1.7, 2.8, 1.3];
+  const colores = ["#C0C0C0", "#FFD700", "#CD7F32"];
+  const posicionesX = [-3.7, 0, 3.7];
+
   return (
-<Canvas
-  style={{ width: "900px", height: "400px", borderRadius: "12px" }}
-  shadows
-  camera={{ position: [0, 0, 10], fov: 45 }}
->
-  {/* <color attach="background" args={["#e0f7ff"]} /> */}
-  <ambientLight intensity={0.5} />
-  <directionalLight position={[5, 10, 5]} intensity={2} castShadow />
+    <div style={{ display: "flex", justifyContent: "center", alignItems: "flex-start", width: "100%" }}>
+      <Canvas
+        style={{ width: "520px", height: "520px", borderRadius: "18px", background: "transparent" }}
+        shadows
+        camera={{ position: [-7, 7, 20], fov: 30 }} // Ajuste de cámara para reducir el zoom
+      >
+        <ambientLight intensity={0.7} />
+        <directionalLight position={[5, 10, 5]} intensity={2.3} castShadow />
+        <OrbitControls enablePan={false} maxPolarAngle={Math.PI / 2.1} minPolarAngle={Math.PI / 3} />
 
-  <OrbitControls enablePan={false} maxPolarAngle={Math.PI / 2.1} minPolarAngle={Math.PI / 3} />
+        {podio.length > 0 && (
+          <group position={[0, 1.5, 0]}> {/* Elevación leve del podio */}
+            {[1, 0, 2].map((idx, i) =>
+              podio[idx] && (
+                <group key={idx}>
+                  <mesh position={[posicionesX[i], alturas[idx] / 2, 0]} castShadow>
+                    <boxGeometry args={[2.7, alturas[idx], 1.3]} />
+                    <meshStandardMaterial color={colores[idx]} />
+                  </mesh>
 
-  {/* Encabezados */}
-  {["Posición", "Nombre", "Puntaje"].map((titulo, colIndex) => (
-    <CeldaTabla3D
-      key={`header-${colIndex}`}
-      texto={titulo}
-      position={[colIndex * 4.2 - 4, 0 + 3, 0]}
-      color="#020873"
-      colorText="white"
-    />
-  ))}
+                  {/* Puntaje sobre la cara frontal del podio */}
+                  <Text
+                    position={[posicionesX[i], alturas[idx] / 2, 0.7]}
+                    fontSize={0.3}
+                    color="#ffffff"
+                    anchorX="center"
+                    anchorY="middle"
+                    font="fonts/Montserrat-Bold.ttf"
+                  >
+                    {podio[idx].puntaje + " pts"}
+                  </Text>
 
-  {/* Filas de datos */}
-  {usuarios.map((user, filaIndex) => {
-    const row = [
-      `#${filaIndex + 1}`,
-      user.nombre.split(" ").slice(0, 2).join(" "),
-      user.puntaje.toString()
-    ];
-
-    return row.map((texto, colIndex) => (
-      <CeldaTabla3D
-        key={`celda-${filaIndex}-${colIndex}`}
-        texto={texto}
-        position={[colIndex * 4.2 - 4, -(filaIndex + 1) * 1.2 + 3, 0]}
-        color={filaIndex % 2 === 0 ? "#D1D3FF" : "#9EA3FF"}
-        colorText="black"
-      />
-    ));
-  })}
-</Canvas>
-
+                  {/* Nombre y posición por encima */}
+                  <Text
+                    position={[posicionesX[i], alturas[idx] + 0.55, 0]}
+                    fontSize={0.3}
+                    color="#222"
+                    anchorX="center"
+                    anchorY="middle"
+                    font="fonts/Montserrat-Bold.ttf"
+                  >
+                    {podio[idx].nombre.split(" ").slice(0, 2).join(" ")}
+                  </Text>
+                  <Text
+                    position={[posicionesX[i], -0.7, 0]}
+                    fontSize={0.28}
+                    color="#444"
+                    anchorX="center"
+                    anchorY="middle"
+                    font="fonts/Montserrat-Bold.ttf"
+                  >
+                    {idx + 1}°
+                  </Text>
+                </group>
+              )
+            )}
+          </group>
+        )}
+      </Canvas>
+      <div style={{ marginLeft: "38px", marginTop: "18px" }}>
+        <div style={{ display: "flex", gap: "0.5rem", marginBottom: "0.5rem" }}>
+          {["Posición", "Nombre", "Puntaje"].map((titulo) => (
+            <div
+              key={titulo}
+              style={{
+                background: "#020873",
+                color: "white",
+                borderRadius: 8,
+                padding: "0.5rem 0",
+                fontWeight: 700,
+                fontFamily: 'Montserrat',
+                fontSize: 19,
+                width: 200,
+                textAlign: "center",
+              }}
+            >
+              {titulo}
+            </div>
+          ))}
+        </div>
+        {resto.map((user, filaIndex) => (
+          <div key={user.nombre + filaIndex} style={{ display: "flex", gap: "0.5rem", marginBottom: 6 }}>
+            <div
+              style={{
+                background: filaIndex % 2 === 0 ? "#D1D3FF" : "#9EA3FF",
+                color: "#222",
+                borderRadius: 8,
+                padding: "0.5rem 0",
+                fontFamily: 'Montserrat',
+                fontSize: 17,
+                width: 200,
+                textAlign: "center",
+              }}
+            >
+              {filaIndex + 4}
+            </div>
+            <div
+              style={{
+                background: filaIndex % 2 === 0 ? "#D1D3FF" : "#9EA3FF",
+                color: "#222",
+                borderRadius: 8,
+                padding: "0.5rem 0",
+                fontFamily: 'Montserrat',
+                fontSize: 17,
+                width: 200,
+                textAlign: "center",
+              }}
+            >
+              {user.nombre.split(" ").slice(0, 2).join(" ")}
+            </div>
+            <div
+              style={{
+                background: filaIndex % 2 === 0 ? "#D1D3FF" : "#9EA3FF",
+                color: "#222",
+                borderRadius: 8,
+                padding: "0.5rem 0",
+                fontFamily: 'Montserrat',
+                fontSize: 17,
+                width: 200,
+                textAlign: "center",
+              }}
+            >
+              {user.puntaje + " pts"}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
   );
 }
 

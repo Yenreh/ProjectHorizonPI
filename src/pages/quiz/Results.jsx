@@ -46,7 +46,7 @@ export function Results({ puntaje, totalPreguntas, onReiniciar }) {
       </p>
 
       {/* 🎖 Medallero 3D */}
-  <div style={{ margin: "2rem 0", marginTop: "0" }}>
+  <div style={{ margin: "0", marginTop: "0" }}>
     <MedalleroCanvas />
   </div>
   
