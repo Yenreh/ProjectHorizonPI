@@ -1,0 +1,187 @@
+/* Base styling - siguiendo el patrón de Home.css */
+.bg-gradient-light {
+    background: radial-gradient(circle, var(--color-0) 0%, var(--color-6) 70%);
+}
+
+/* Hero Section */
+.lm-hero-section {
+    background: url('/images/aprende-mas.webp') center/cover no-repeat;
+    height: 400px;
+    box-shadow: 0 10px 20px rgba(var(--color-3-rgb), 0.15);
+}
+
+.lm-hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, rgba(var(--color-3-rgb), 0.3) 0%, rgba(var(--color-3-rgb), 0.7) 100%);
+}
+
+.lm-hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.lm-hero-title {
+    color: var(--color-0);
+    text-shadow: 0 2px 4px rgba(var(--color-1-rgb), 0.3);
+}
+
+.lm-hero-lead {
+    color: var(--color-6);
+    text-shadow: 0 1px 2px rgba(var(--color-1-rgb), 0.3);
+}
+
+/* Section Titles - siguiendo el patrón de Home */
+.lm-section-title {
+    color: var(--color-3);
+    position: relative;
+    padding-bottom: 15px;
+    display: inline-block;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.lm-section-title::after {
+    content: '';
+    position: absolute;
+    width: 60px;
+    height: 3px;
+    background-color: var(--color-4);
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.lm-section-title:hover::after {
+    width: 100px;
+    transition: width 0.3s ease;
+}
+
+/* Cards de información */
+.lm-info-card {
+    border-radius: 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background: var(--color-0);
+}
+
+.lm-info-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15) !important;
+}
+
+.lm-card-title {
+    color: var(--color-3);
+    font-weight: 600;
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+}
+
+.lm-card-list {
+    padding-left: 1.2em;
+    margin: 0;
+    color: var(--color-3);
+}
+
+.lm-card-list li {
+    margin-bottom: 0.75em;
+    line-height: 1.5;
+}
+
+.lm-link {
+    color: var(--color-4);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.lm-link:hover {
+    color: var(--color-3);
+    text-decoration: underline;
+}
+
+/* Cards de estadísticas */
+.lm-stat-card {
+    border-radius: 15px;
+    transition: transform 0.3s ease;
+    background: var(--color-0);
+    padding: 1rem;
+}
+
+.lm-stat-card:hover {
+    transform: translateY(-3px);
+}
+
+.lm-stat-icon {
+    width: 70px;
+    height: 70px;
+    object-fit: contain;
+    border-radius: 50%;
+    box-shadow: 0 4px 12px rgba(var(--color-4-rgb), 0.2);
+}
+
+.lm-stat-text {
+    color: var(--color-3);
+    font-size: 0.95rem;
+    line-height: 1.4;
+    margin: 0;
+}
+
+/* FAQ Card */
+.lm-faq-card {
+    border-radius: 15px;
+    background: linear-gradient(135deg, var(--color-6) 0%, var(--color-0) 100%);
+}
+
+.lm-faq-question {
+    color: var(--color-3);
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+.lm-faq-answer {
+    color: var(--color-3);
+    margin: 0;
+    line-height: 1.5;
+}
+
+.lm-faq-item {
+    padding: 1rem;
+    border-radius: 10px;
+    background: rgba(var(--color-0-rgb), 0.8);
+    transition: background 0.3s ease;
+}
+
+.lm-faq-item:hover {
+    background: var(--color-0);
+}
+
+/* Background general */
+.lm-bg {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #e0e7ff 0%, #f8fafc 100%);
+}
+
+
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .lm-hero-section {
+        height: 300px;
+    }
+    
+    .lm-hero-title {
+        font-size: 2rem;
+    }
+    
+    .lm-section-title {
+        font-size: 1.5rem;
+    }
+    
+    .lm-stat-icon {
+        width: 50px;
+        height: 50px;
+    }
+}
