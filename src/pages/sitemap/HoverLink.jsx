@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./HoverLink.css"; // Asegúrate de crear este archivo también
+import "./HoverLink.css";
 
 const HoverLink = ({ to, children }) => {
   return (
