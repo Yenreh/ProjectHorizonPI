@@ -41,6 +41,11 @@ const Footer = () => {
                   Sobre Nosotros
                 </Link>
               </li>
+              <li>
+                <Link className="text-decoration-none" to="/not-found">
+                  Mapa del Sitio
+                </Link>
+              </li>
             </ul>
           </Col>
           <Col xs={12} md={4}>
