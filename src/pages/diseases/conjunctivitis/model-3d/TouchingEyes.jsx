@@ -55,15 +55,17 @@ export function TouchingEyes(props) {
     };
   }, []);
 
-  useFrame(() => {
+  useFrame((state) => {
     const action = actionRef.current;
     if (!action) return;
+    
     // Refuerzo: la primera vez que se renderiza, forzar frame 15
     if (!initialized.current) {
       action.paused = true;
       action.time = startTime;
       initialized.current = true;
     }
+    
     if (xPressed.current) {
       if (!action.isRunning()) {
         action.reset();
@@ -80,6 +82,17 @@ export function TouchingEyes(props) {
       if (action.paused && Math.abs(action.time - startTime) > 0.01) {
         action.time = startTime;
       }
+    }
+
+    // Movimiento sutil de respiración solo cuando no se está presionando X
+    if (group.current && !xPressed.current) {
+      const breathingIntensity = 0.003; // Intensidad muy sutil
+      const breathingSpeed = 1; // Velocidad de respiración
+      const breathing = Math.sin(state.clock.elapsedTime * breathingSpeed) * breathingIntensity;
+      
+      // Aplicar el movimiento de respiración al grupo principal
+      group.current.scale.y = (props.scale || 1) * (1 + breathing);
+      group.current.position.y = (props.position?.[1] || 0) + breathing * 0.5;
     }
   });
 
