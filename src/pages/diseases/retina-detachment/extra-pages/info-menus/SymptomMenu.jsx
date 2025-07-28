@@ -1,4 +1,3 @@
-// SymptomMenu.js
 import React from 'react';
 import './SymptomMenu.css';
 
@@ -15,7 +14,7 @@ const SymptomMenu = ({ symptoms, activeSymptom, onSelectSymptom }) => {
 
   return (
     <div className="symptom-menu">
-      <h4>Síntomas:</h4>
+      <h4>Síntomas (ESC ver el mouse):</h4>
       <ul>
         {Object.keys(symptoms).map((key) => (
           <li key={key}>

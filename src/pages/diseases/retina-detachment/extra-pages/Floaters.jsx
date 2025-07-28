@@ -11,7 +11,7 @@ import "./Floaters.css";
 import { useEffect, Suspense, useState } from "react"; // Añadido useState
 import { PlayerControls } from "../controls/PlayerControls";
 
-// Nuevos componentes (los crearemos más abajo)
+// Nuevos componentes
 import SymptomMenu from "./info-menus/SymptomMenu";
 import SymptomDisplayInfo from "./info-menus/SymptomDisplayInfo";
 
@@ -60,7 +60,7 @@ export default function Floaters() {
     [SYMPTOM_TYPES.NONE]: {
       title: "Simulador de Desprendimiento de Retina",
       explanation: "Bienvenido al simulador de síntomas visuales del desprendimiento de retina. Selecciona un síntoma del menú de la izquierda para experimentarlo. ",
-      instructions: "Haz clic en la pantalla para interactuar. Usa W, A, S, D para moverte y el RATÓN para mirar. Presiona ESC para liberar el ratón y acceder al menú.",
+      instructions: "Mira las instrucciones en la imagen y haz clic en la pantalla para interactuar con la simulación",
     },
     [SYMPTOM_TYPES.FLOATERS]: {
       title: "Miodesopsias (Moscas Volantes)",
@@ -75,7 +75,7 @@ export default function Floaters() {
     [SYMPTOM_TYPES.CURTAIN]: {
       title: "Escotoma (Cortina Negra)",
       explanation: "La aparición de una 'cortina' o sombra oscura que obstruye parte de la visión es un síntoma alarmante. Puede indicar que una porción de la retina se ha desprendido.",
-      instructions: "Observa cómo una sombra oscura invade progresivamente tu visión.",
+      instructions: "Observa cómo una sombra oscura invade tu visión.",
     },
     [SYMPTOM_TYPES.BLURRED]: {
       title: "Visión Borrosa",
@@ -101,7 +101,7 @@ export default function Floaters() {
           className="back-button-drei"
           style={{ pointerEvents: 'auto' }}
         >
-          ← Volver (Presiona ESC para revelar el puntero)
+          ← Volver
         </button>
       </div>
 

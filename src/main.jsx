@@ -16,6 +16,7 @@ const Conjunctivitis = lazy(() => import("./pages/diseases/conjunctivitis/Conjun
 const LearnMore = lazy(() => import("./pages/learn-more/LearnMore.jsx"));
 const NotFound = lazy(() => import("./pages/not-found/NotFound"));
 const Quiz = lazy(() => import("./pages/quiz/Quiz.jsx"));
+const AboutUs = lazy(() => import("./pages/about-us/AboutUs.jsx"))
 
 createRoot(document.getElementById("root")).render(
   <BrowserRouter>
@@ -35,6 +36,7 @@ createRoot(document.getElementById("root")).render(
                 <Quiz />
               </ProtectedRoute>
             } />
+            <Route path="/about-us" element={<AboutUs />} />
         </Route>
 
         {/* Rutas sin Layout (pantalla completa) */}
