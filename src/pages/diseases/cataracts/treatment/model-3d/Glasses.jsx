@@ -83,7 +83,7 @@ export function Glasses(props) {
         />
 
         <mesh castShadow receiveShadow geometry={nodes.Lens.geometry}  
-          onClick={() => {
+          onDoubleClick={() => {
             setNublado('normal');
             targetCameraPos.current = initialCameraPos.current.clone();
           }}

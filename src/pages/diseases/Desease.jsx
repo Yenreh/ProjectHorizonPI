@@ -3,7 +3,7 @@
 import { useState, useEffect, Suspense } from 'react';
 import { Container, Row, Col, Tab, Tabs } from 'react-bootstrap';
 import './Desease.css';
-import useModelStore from '../stores/useModelStore';
+import useModelStore from '../../stores/useModelStore';
 
 function Desease({ desease, tabs, Definitions }) {
     const [key, setKey] = useState('definition');

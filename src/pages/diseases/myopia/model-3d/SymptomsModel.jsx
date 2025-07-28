@@ -2,7 +2,7 @@
 import { useRef } from 'react';
 import { useGLTF } from '@react-three/drei';
 import { useFrame } from '@react-three/fiber';
-import useModelStore from '../../../stores/useModelStore';
+import useModelStore from '../../../../stores/useModelStore';
 
 function SymptomsModel(props) {
     const { nodes, materials } = useGLTF('/models-3d/myopia/model-2.glb');
