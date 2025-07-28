@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Text } from "@react-three/drei";
 import useUserStore from "../../stores/use-user-store";
+import { Html } from '@react-three/drei';
+import './Medal-table.css'
 
 function CeldaTabla3D({ texto, position, ancho = 4, largo = 1, color, colorText }) {
   return (
@@ -55,7 +57,7 @@ function MedalleroCanvas() {
         <OrbitControls enablePan={false} maxPolarAngle={Math.PI / 2.1} minPolarAngle={Math.PI / 3} />
 
         {podio.length > 0 && (
-          <group position={[0, 1.5, 0]}>
+          <group position={[0.2, 1.5, 0]}>
             {/* Orden: centro (oro, 1°), izq (plata, 2°), der (bronce, 3°) */}
             {podio[0] && (
               <group key={0}>
@@ -173,8 +175,61 @@ function MedalleroCanvas() {
             )}
           </group>
         )}
+
+ 
       </Canvas>
       <div style={{ marginLeft: "38px", marginTop: "18px" }}>
+      <Canvas 
+      style={{ width: "640px", height: "540px", borderRadius: "18px", background: "transparent" }}
+      >
+         <Html  zIndexRange={[1, 0]} transform={false} wrapperClass="classTablePodio">
+    <div style={{ marginTop: "0rem", marginLeft: "1rem" }}>
+      <div style={{ display: "flex", gap: "0.5rem", marginBottom: "0.5rem" }}>
+        {["Posición", "Nombre", "Puntaje"].map((titulo) => (
+          <div
+            key={titulo}
+            style={{
+              background: "#020873",
+              color: "white",
+              borderRadius: 8,
+              padding: "0.5rem 0",
+              fontWeight: 700,
+              fontFamily: 'Montserrat',
+              fontSize: 19,
+              width: 200,
+              textAlign: "center",
+            }}
+          >
+            {titulo}
+          </div>
+        ))}
+      </div>
+      {resto.map((user, filaIndex) => (
+        <div key={user.nombre + filaIndex} style={{ display: "flex", gap: "0.5rem", marginBottom: 6 }}>
+          {[filaIndex + 4, user.nombre.split(" ").slice(0, 2).join(" "), user.puntaje + " pts"].map((text, i) => (
+            <div
+              key={i}
+              style={{
+                background: filaIndex % 2 === 0 ? "#D1D3FF" : "#9EA3FF",
+                color: "#222",
+                borderRadius: 8,
+                padding: "0.5rem 0",
+                fontFamily: 'Montserrat',
+                fontSize: 17,
+                width: 200,
+                textAlign: "center",
+              }}
+            >
+              {text}
+            </div>
+          ))}
+        </div>
+      ))}
+    </div>
+  </Html>
+      </Canvas>
+      </div>
+      {/* <div style={{ marginLeft: "38px", marginTop: "18px" }}>
         <div style={{ display: "flex", gap: "0.5rem", marginBottom: "0.5rem" }}>
           {["Posición", "Nombre", "Puntaje"].map((titulo) => (
             <div
@@ -241,7 +296,7 @@ function MedalleroCanvas() {
             </div>
           </div>
         ))}
-      </div>
+      </div> */}
     </div>
   );
 }
