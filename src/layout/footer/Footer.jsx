@@ -13,47 +13,12 @@ const Footer = () => {
     <footer>
       <Container className="pt-5">
         <Row className="d-flex flex-row justify-content-center text-center">
-          <Col xs={12} md={4} className="mb-4 mb-md-0">
-            <h4>Enfermedades</h4>
-            <ul className="list-unstyled d-flex flex-column gap-2">
-              {deseases.map((disease) => (
-                <li key={disease.name}>
-                  <Link
-                    className="text-decoration-none"
-                    to={`/${disease.name.replace("_", "-")}`}
-                  >
-                    {disease.verbose}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </Col>
-          <Col xs={12} md={4} className="mb-4 mb-md-0">
-            <h4>Información</h4>
-            <ul className="list-unstyled d-flex flex-column gap-2">
-              <li>
-                <Link className="text-decoration-none" to="/">
-                  Inicio
-                </Link>
-              </li>
-              <li>
-                <Link className="text-decoration-none" to="/about">
-                  Sobre Nosotros
-                </Link>
-              </li>
-              <li>
-                <Link className="text-decoration-none" to="/not-found">
-                  Mapa del Sitio
-                </Link>
-              </li>
-            </ul>
-          </Col>
           <Col xs={12} md={4}>
-            <h4>Pruebas</h4>
+            <h4>Informacion Relevante</h4>
             <ul className="list-unstyled d-flex flex-column gap-2">
               <li>
-                <Link className="text-decoration-none" to="/quiz">
-                  Quiz
+                <Link className="text-decoration-none" to="/sitemap">
+                  Mapa del Sitio
                 </Link>
               </li>
             </ul>
