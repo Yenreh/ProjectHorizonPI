@@ -1,6 +1,7 @@
 import { createRoot } from "react-dom/client";
 import { BrowserRouter, Routes, Route, Outlet } from "react-router";
 import { Suspense, lazy } from "react";
+import ProtectedRoute from "./routes/ProtectedRoute";
 import Layout from "./layout/Layout";
 import "bootstrap/dist/css/bootstrap.min.css";
 import 'bootstrap-icons/font/bootstrap-icons.css';
@@ -12,6 +13,7 @@ const Myopia = lazy(() => import("./pages/diseases/myopia/Myopia.jsx"));
 const RetinaDetachment = lazy(() => import("./pages/diseases/retina-detachment/RetinaDetachment.jsx"));
 const Floaters = lazy(() => import("./pages/diseases/retina-detachment/extra-pages/Floaters.jsx"));
 const Conjunctivitis = lazy(() => import("./pages/diseases/conjunctivitis/Conjunctivitis.jsx"));
+const LearnMore = lazy(() => import("./pages/learn-more/LearnMore.jsx"));
 const NotFound = lazy(() => import("./pages/not-found/NotFound"));
 const Quiz = lazy(() => import("./pages/quiz/Quiz.jsx"));
 
@@ -23,11 +25,16 @@ createRoot(document.getElementById("root")).render(
         <Route element={<Layout><Outlet /></Layout>}>
             <Route index path="/" element={<Home />} />
             <Route path="*" element={<NotFound />} />
+            <Route path="/aprende-mas" element={<LearnMore />} />
             <Route path="/cataratas" element={<Cataracts />} />
             <Route path="/miopia" element={<Myopia />} />
             <Route path="/desprendimiento_retina" element={<RetinaDetachment />} />
             <Route path="/conjuntivitis" element={<Conjunctivitis />} />
-            <Route path="/quiz" element={<Quiz />} />
+            <Route path="/quiz" element={
+              <ProtectedRoute>
+                <Quiz />
+              </ProtectedRoute>
+            } />
         </Route>
 
         {/* Rutas sin Layout (pantalla completa) */}
