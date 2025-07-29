@@ -10,9 +10,18 @@ import LoginModal from "../components/LoginModal";
 export default function ProtectedRoute({ children }) {
   const { userLooged } = useAuthStore();
   const navigate = useNavigate();
+  const handleLoginNav = () => {
+    if (userLooged) {
+      navigate("/quiz");
+    } 
+    else {
+      navigate("/");
+    }
+    
+  };
 
   if (!userLooged) {
-    return <LoginModal visible={true} onClose={() => navigate("/")} type={"not-logged"} />;
+    return <LoginModal visible={true} onClose={handleLoginNav} type={"not-logged"} />;
   }
   return children;
 }

@@ -15,7 +15,6 @@ export default function LoginModal({ visible, onClose, type }) {
       .then(() => {
         onClose();
       })
-        
       .catch(() => navigate("/"));
   }, [loginGoogleWithPopUp, navigate]);
   const texts = {
