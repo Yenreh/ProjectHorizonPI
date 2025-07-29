@@ -9,10 +9,24 @@ const SymptomDisplayInfo = ({ title, explanation, instructions, isInitialPrompt 
         <h2>{title}</h2>
         <p className="explanation-text">{explanation}</p>
         {instructions && (
-          <p className="instructions-text">
-            {/* Si es el prompt inicial, podría tener un estilo diferente o un CTA más claro */}
-            {isInitialPrompt ? <strong>{instructions}</strong> : instructions}
-          </p>
+          <div className="instructions-area">
+            {isInitialPrompt ? (
+              // Vista especial para el prompt inicial con la imagen de los controles
+              <div className="controls-info">
+                <p className="instructions-text">
+                  <strong>{instructions}</strong>
+                </p>
+                <img 
+                  src="/images/rd-sim-controls.webp" 
+                  alt="Controles de la simulación: Teclas W, A, S, D para moverse y el Ratón para mirar." 
+                  className="controls-image"
+                />
+              </div>
+            ) : (
+              // Vista normal para las instrucciones de otros síntomas
+              <p className="instructions-text">{instructions}</p>
+            )}
+          </div>
         )}
       </div>
     </div>

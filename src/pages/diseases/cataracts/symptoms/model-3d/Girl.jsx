@@ -5,7 +5,7 @@ import { useFrame } from '@react-three/fiber'
 import * as THREE from 'three'
 import { useThree } from '@react-three/fiber'
 import Text from "../texts/Text"
-import {  useKeyboardControls } from '@react-three/drei'
+import {  useKeyboardControls, Text3D, Center } from '@react-three/drei'
 import { DepthOfField, EffectComposer,  ChromaticAberration } from '@react-three/postprocessing'
 
 export function Girl(props) {
@@ -136,6 +136,22 @@ export function Girl(props) {
           <ChromaticAberration offset={[0.005, 0.003]} />
           
         </EffectComposer>
+        <Center position={[0, -2, 3]}>
+          <Text3D
+        font="fonts/Montserrat-SemiBold.json"
+        bevelEnabled
+        bevelSize={0.01}
+        bevelThickness={0.02}
+        height={0.01}
+        lineHeight={0.8}
+        letterSpacing={0.02}
+        size={0.4}
+        scale={[-1, 1, 1]}
+      >
+        Visión borrosa
+        <meshStandardMaterial color="blue" />
+      </Text3D>
+      </Center>
         </>
       )}
     </group>

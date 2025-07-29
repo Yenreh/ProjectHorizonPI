@@ -6,7 +6,7 @@ import Trees from '../models-3d/Tree'; // Importaremos el nuevo componente
 // Hacemos estas constantes exportables o las definimos donde sean accesibles para Trees
 export const TERRAIN_SIZE_X = 200;
 export const TERRAIN_SIZE_Z = 200;
-export const TERRAIN_DISPLACEMENT_SCALE = 10; // La misma que usa abajo
+export const TERRAIN_DISPLACEMENT_SCALE = -2; // La misma que usa abajo
 export const TERRAIN_BASE_Y = 0; // La posición Y base del plano
 
 export default function Ground() {
@@ -23,9 +23,9 @@ export default function Ground() {
     displacementTexture.wrapS = displacementTexture.wrapT = THREE.RepeatWrapping;
     displacementTexture.repeat.set(1, 1);
     displacementTexture.anisotropy = 16;
-    // No es necesario colorSpace para displacement/height maps si son lineales
   }
 
+   console.log('Textura de Desplazamiento Cargada:', displacementTexture);
   return (
     <>
       <Plane

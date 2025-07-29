@@ -55,7 +55,7 @@ export default function RdSymptoms() {
               </li>
               <li>
                 <b>Visión borrosa o distorsionada:</b> dificultad para enfocar,
-                líneas rectas que parecen onduladas o deformadas.
+                líneas rectas que parecen onduladas.
               </li>
               <li>
                 <b>Pérdida parcial de la visión:</b> generalmente en los bordes

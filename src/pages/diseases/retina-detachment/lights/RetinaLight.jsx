@@ -8,7 +8,7 @@ export default function RetinaLight() {
   const { scene } = useThree();
 
   // Muestra un helper visual para la luz
-  useHelper(directionalLightRef, DirectionalLightHelper, 1, "yellow");
+  // useHelper(directionalLightRef, DirectionalLightHelper, 1, "yellow");
 
   return (
     <>
