@@ -13,7 +13,7 @@ const Layout = ({ children }) => {
       <Header onLoginClick={() => setShowModal(true)} />
       <main className="flex-grow-1 ">{children}</main>
       <Footer />
-      <LoginModal visible={showModal} onClose={() => setShowModal(false)} />
+      <LoginModal visible={showModal} onClose={() => setShowModal(false)} type={"login"} />
     </div>
   );
 };
