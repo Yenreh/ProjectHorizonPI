@@ -38,7 +38,7 @@ const Sitemap = () => {
                         <HoverLink to="/">Inicio</HoverLink>
                       </li>
                       <li>
-                        <HoverLink to="/about">Sobre Nosotros</HoverLink>
+                        <HoverLink to="/about-us">Sobre Nosotros</HoverLink>
                       </li>
                       <li>
                         <HoverLink to="/aprende-mas">Aprende más</HoverLink>
