@@ -44,11 +44,11 @@ const Footer = () => {
             </ul>
           </Col>
           <Col xs={12} md={4}>
-            <h4>Pruebas</h4>
+            <h4>Informacion Relevante</h4>
             <ul className="list-unstyled d-flex flex-column gap-2">
               <li>
-                <Link className="text-decoration-none" to="/quiz">
-                  Quiz
+                <Link className="text-decoration-none" to="/sitemap">
+                  Mapa del Sitio
                 </Link>
               </li>
             </ul>

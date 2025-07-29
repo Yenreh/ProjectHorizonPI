@@ -1,0 +1,91 @@
+/* Fondo general */
+.lm-bg {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #e0e7ff 0%, #f8fafc 100%);
+  }
+  
+  /* Fondo gradiente del body */
+  .bg-gradient-light {
+    background: radial-gradient(circle, var(--color-0) 0%, var(--color-6) 70%);
+  }
+  
+  /* Hero Section */
+  .lm-hero-section {
+    background: url("/images/home/examen-ojos.png") center 30% / cover no-repeat;
+    height: 400px;
+    box-shadow: 0 10px 20px rgba(var(--color-3-rgb), 0.15);
+  }
+  
+  .lm-hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+      90deg,
+      rgba(var(--color-3-rgb), 0.3) 0%,
+      rgba(var(--color-3-rgb), 0.7) 100%
+    );
+  }
+  
+  .lm-hero-content {
+    position: relative;
+    z-index: 2;
+  }
+  
+  .lm-hero-title {
+    color: var(--color-0);
+    text-shadow: 0 2px 4px rgba(var(--color-1-rgb), 0.3);
+  }
+  
+  .lm-hero-lead {
+    color: var(--color-6);
+    text-shadow: 0 1px 2px rgba(var(--color-1-rgb), 0.3);
+  }
+  
+  /* Cards */
+  .lm-info-card {
+    border-radius: 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background: var(--color-0);
+  }
+  
+  .lm-info-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15) !important;
+  }
+  
+  .lm-card-title {
+    color: var(--color-3);
+    font-weight: 600;
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+  }
+  
+  /* Links */
+  .link-clean {
+    font-size: 1.3rem;
+  }
+  
+  .link-clean:visited,
+  .link-clean:active {
+    color: #5b61d9;
+    text-decoration: none;
+  }
+  
+  .link-clean:hover {
+    color: #9ea3ff;
+    text-decoration: none;
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .lm-hero-section {
+      height: 300px;
+    }
+  
+    .lm-hero-title {
+      font-size: 2rem;
+    }
+  }  
