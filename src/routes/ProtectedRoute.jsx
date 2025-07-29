@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router";
 import useAuthStore from "../stores/use-auth-store";
-import NotLoggedModal from "../components/NotLoggedModal";
+import LoginModal from "../components/LoginModal";
 
 /**
  * ProtectedRoute: Solo renderiza el children si el usuario está logueado.
@@ -12,7 +12,7 @@ export default function ProtectedRoute({ children }) {
   const navigate = useNavigate();
 
   if (!userLooged) {
-    return <NotLoggedModal isOpen={true} onClose={() => navigate("/")} />;
+    return <LoginModal visible={true} onClose={() => navigate("/")} type={"not-logged"} />;
   }
   return children;
 }
