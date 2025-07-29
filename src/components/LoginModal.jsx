@@ -15,9 +15,18 @@ export default function LoginModal({ visible, onClose, type }) {
       .then(() => {
         onClose();
       })
-        
-      .catch(() => navigate("/"));
-  }, [loginGoogleWithPopUp, navigate]);
+      .catch(() => {
+        if (type === "not-logged") {
+          alert("Debes iniciar sesión para poder realizar el quiz.");
+          console.log("No has iniciado sesión, redirigiendo al quiz");
+          navigate("/quiz");
+        } else if (type === "login") {
+          alert("Error al iniciar sesión, redirigiendo a inicio.");
+          console.log("Error al iniciar sesión, redirigiendo a inicio");
+          navigate("/");
+        }
+      });
+  }, [loginGoogleWithPopUp, navigate, type]);
   const texts = {
     "not-logged": {
       title: "¡No has iniciado sesión!",

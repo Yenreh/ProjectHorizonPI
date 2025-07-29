@@ -5,14 +5,13 @@ import { getFirestore } from "firebase/firestore";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
-// Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyC3DjQJ3Pv2triDGda8_zr55nodW-NljWc",
-  authDomain: "horizon-pi.firebaseapp.com",
-  projectId: "horizon-pi",
-  storageBucket: "horizon-pi.firebasestorage.app",
-  messagingSenderId: "575273968051",
-  appId: "1:575273968051:web:26e081cc8cfbf7ebf6abc6"
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID
 };
 
 // Initialize Firebase
