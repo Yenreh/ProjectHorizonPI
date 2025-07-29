@@ -1,5 +1,5 @@
 import { Canvas } from "@react-three/fiber";
-import { Suspense } from "react";
+import { Suspense, useState } from "react";
 import { EyeCrossSection } from "../models-3d/EyeCrossSection";
 import CameraSetup from "../camera/CameraSetup";
 import RetinaLight from "../lights/RetinaLight";
@@ -7,6 +7,8 @@ import RdControls from "../controls/RdControls";
 import { Col, Row } from "react-bootstrap";
 import { Html } from "@react-three/drei";
 import VideoSetup from "../media/VideoSetup";
+import { LuRotate3D } from "react-icons/lu";
+import InfoButton from "../../myopia/Utils/InfoButton/InfoButton";
 
 export default function RdDefinition() {
   return (
@@ -14,6 +16,9 @@ export default function RdDefinition() {
       <Row className="align-items-center gy-4">
         <Col md={6}>
           <div className="desease-canvas-wrapper">
+            <div className="position-absolute bottom-0 end-0 p-2 desease-canvas-icon">
+              <LuRotate3D title="Modelo 3D" />
+            </div>
             <Canvas camera={{ position: [0, 1, 3] }} shadows>
               <CameraSetup />
               <Suspense fallback={null}>

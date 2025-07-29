@@ -4,7 +4,7 @@ import * as THREE from "three";
 import HospitalTwo from "../staging/HospitalTwo";
 import SceneContent from "../utils/SceneContent";
 import { Suspense, useState } from "react";
-// import './RdPrevention.css'
+import { LuRotate3D } from "react-icons/lu";
 
 // Información de los objetos
 const EQUIPMENT_INFO = {
@@ -55,20 +55,22 @@ export default function RdPrevention() {
               overflow: "hidden" // Para que el panel no se salga si es muy grande (opcional)
             }}
           >
+            <div className="position-absolute bottom-0 end-0 p-2 desease-canvas-icon">
+              <LuRotate3D title="Modelo 3D" />
+            </div>
             <Canvas
               shadows
               camera={{ position: OVERVIEW_CAMERA_POSITION.toArray(), fov: 50, near: 0.1, far: 1000 }}
               onPointerMissed={(event) => {
                   // Solo deseleccionar si el click es en el canvas y no en un objeto (y algo está seleccionado)
                   if (selectedObjectKey && event.target.tagName === 'CANVAS') {
-                    // handleGoBackOverview(); // Descomentar si quieres que click en fondo deseleccione
                   }
               }}
             >
               <Suspense fallback={null}>
                 <SceneContent 
                   onObjectSelect={handleObjectSelect} 
-                  onGoBackOverview={handleGoBackOverview} // No lo usamos directamente en SceneContent pero podría ser útil
+                  onGoBackOverview={handleGoBackOverview}
                   currentSelectedKey={selectedObjectKey}
                 />
                 <HospitalTwo />
@@ -88,7 +90,6 @@ export default function RdPrevention() {
                   color: 'white', // Texto blanco
                   borderRadius: '8px',
                   zIndex: 10, // Para estar por encima del canvas
-                  // pointerEvents: 'auto' // Ya no es necesario si está fuera y bien posicionado
                 }}
               >
                 <h4 className="mb-2" style={{ color: '#87CEFA' /* LightSkyBlue, o tu var(--color-accent) */ }}>
@@ -98,7 +99,7 @@ export default function RdPrevention() {
                   {selectedInfo.description}
                 </p>
                 <button 
-                  className="btn btn-sm btn-light" // Botón con fondo claro
+                  className="btn btn-sm btn-light"
                   onClick={handleGoBackOverview}
                   style={{fontSize: '0.8rem'}}
                 >
@@ -110,7 +111,7 @@ export default function RdPrevention() {
         </Col>
         <Col md={6}>
           <div className="desease-text-definition p-4">
-            {/* ... tu contenido HTML de la derecha ... */}
+            {/* ... contenido HTML de la derecha ... */}
             <h2 className="mb-3" style={{ color: "var(--color-2)" }}>
               Prevención
             </h2>

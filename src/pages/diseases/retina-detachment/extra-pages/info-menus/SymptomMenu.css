@@ -58,3 +58,29 @@
     color: white;
     font-weight: bold;
   }
+
+
+/* Contenedor para el área de instrucciones para un mejor espaciado */
+.instructions-area {
+  margin-top: 20px;
+  padding-top: 15px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1); /* Separador */
+}
+
+/* Estilos para el texto de instrucciones cuando es el prompt inicial */
+.initial-prompt .instructions-text {
+  text-align: center;
+  font-size: 1.1em;
+  margin-bottom: 15px; /* Espacio entre el texto y la imagen */
+}
+
+/* Estilos para la imagen de los controles */
+.controls-image {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}

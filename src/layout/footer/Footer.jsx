@@ -37,7 +37,7 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link className="text-decoration-none" to="/about">
+                <Link className="text-decoration-none" to="/about-us">
                   Sobre Nosotros
                 </Link>
               </li>
